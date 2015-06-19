@@ -1,5 +1,5 @@
-MAINTAINER Eris Industries <support@erisindustries.com>
 FROM golang:1.4
+MAINTAINER Eris Industries <support@erisindustries.com>
 
 # User Creation
 ENV user eris
