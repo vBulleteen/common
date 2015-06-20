@@ -18,26 +18,35 @@ import (
 )
 
 var (
-	GoPath  = os.Getenv("GOPATH")
-	ErisLtd = path.Join(GoPath, "src", "github.com", "eris-ltd")
+	// Convenience Directories
+	GoPath          = os.Getenv("GOPATH")
+	ErisLtd         = path.Join(GoPath, "src", "github.com", "eris-ltd")
+	usr, _          = user.Current() // error?!
+	ErisRoot        = ResolveErisRoot()
 
-	usr, _      = user.Current() // error?!
-	Eris        = ResolveErisRoot()
-	Dapps       = path.Join(Eris, "dapps")
-	Blockchains = path.Join(Eris, "blockchains")
-	Filesystems = path.Join(Eris, "filesystems")
-	Languages   = path.Join(Eris, "languages")
-	Logs        = path.Join(Eris, "logs")
-	Modules     = path.Join(Eris, "modules")
-	Scratch     = path.Join(Eris, "scratch")
-	HEAD        = path.Join(Blockchains, "HEAD")
-	Refs        = path.Join(Blockchains, "refs")
-	Lllc        = path.Join(Scratch, "lllc")
-	Keys        = path.Join(Eris, "keys")
+	// Major Directories
+	ActionsPath     = path.Join(ErisRoot, "actions")
+	BlockchainsPath = path.Join(ErisRoot, "blockchains")
+	DappsPath       = path.Join(ErisRoot, "dapps")
+	FilesPath       = path.Join(ErisRoot, "files")
+	KeysPath        = path.Join(ErisRoot, "keys")
+	LanguagesPath   = path.Join(ErisRoot, "languages")
+	ServicesPath    = path.Join(ErisRoot, "services")
+	ScratchPath     = path.Join(ErisRoot, "scratch")
+
+	// Scratch Directories (globally coordinated)
+	EpmScratchPath  = path.Join(ScratchPath, "epm")
+	LllcScratchPath = path.Join(ScratchPath, "lllc")
+	SolcScratchPath = path.Join(ScratchPath, "sol")
+	SerpScratchPath = path.Join(ScratchPath, "ser")
+
+	// Blockchains stuff
+	HEAD            = path.Join(BlockchainsPath, "HEAD")
+	Refs            = path.Join(BlockchainsPath, "refs")
 )
 
 var MajorDirs = []string{
-	Eris, Dapps, Blockchains, Filesystems, Languages, Logs, Modules, Scratch, Refs, Lllc, Keys,
+	ErisRoot, ActionsPath, BlockchainsPath, DappsPath, FilesPath, KeysPath, LanguagesPath, ServicesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath
 }
 
 //---------------------------------------------
@@ -89,11 +98,21 @@ func InitDataDir(Datadir string) error {
 }
 
 func ResolveErisRoot() string {
-	ErisEnv := os.Getenv("ERIS")
-	if ErisEnv == "" {
-		return path.Join(usr.HomeDir, ".eris")
+	var eris string
+	if os.Getenv("ERIS") != "" {
+		eris = os.Getenv("ERIS")
+	} else {
+		if runtime.GOOS == "windows" {
+			home := os.Getenv("HOMEDRIVE") + os.Getenv("HOMEPATH")
+			if home == "" {
+				home = os.Getenv("USERPROFILE")
+			}
+			eris = path.Join(home, ".eris")
+		} else {
+			eris = path.Join(Usr(), ".eris")
+		}
 	}
-	return ErisEnv
+	return eris
 }
 
 // Create the default eris tree
