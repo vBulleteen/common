@@ -13,6 +13,7 @@ import (
 	"os/user"
 	"path"
 	"reflect"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -46,7 +47,7 @@ var (
 )
 
 var MajorDirs = []string{
-	ErisRoot, ActionsPath, BlockchainsPath, DappsPath, FilesPath, KeysPath, LanguagesPath, ServicesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath
+	ErisRoot, ActionsPath, BlockchainsPath, DappsPath, FilesPath, KeysPath, LanguagesPath, ServicesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath,
 }
 
 //---------------------------------------------
