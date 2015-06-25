@@ -10,6 +10,6 @@ ENV user eris
 RUN groupadd --system $user \
   && useradd --system --create-home --uid 1000 --gid $user $user
 
-RUN mkdir --parents /home/$user/.eris
+RUN mkdir /home/$user/.eris
 RUN chown --recursive $user /home/$user/.eris
 # USER eris
