@@ -20,8 +20,10 @@ ENV REPO /go/src/github.com/tendermint/tendermint
 COPY start.sh /usr/local/bin/mint
 COPY . $REPO
 WORKDIR $REPO
-RUN make
-RUN mv ./build/* /usr/local/bin/
+RUN go install ./cmd/tendermint
+
+# install the client tools
+RUN go get github.com/eris-ltd/mint-client/...
 
 # persist data, set user
 VOLUME /home/$USER/.eris
@@ -29,6 +31,7 @@ WORKDIR /home/$USER/.eris
 USER $USER
 RUN mkdir --parents /home/$USER/.eris/blockchains/tendermint
 ENV TMROOT /home/$USER/.eris/blockchains/tendermint
+ENV ECM_PATH $REPO
 
 # run tendermint
-CMD ["mint"]
+ENTRYPOINT ["mint"]
