@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 ifExit(){
 	if [ $? -ne 0 ]; then
@@ -7,11 +7,23 @@ ifExit(){
 	fi
 }
 
+#############################################
+# We expect the following env vars to be set
+# $CHAIN_ID
+#
+# one day we'll make it more flexible
+# for now the only consumer is eris-cli
 
-ROOT_DIR=~/.eris/blockchains/tendermint
-if [ ! -d "$ROOT_DIR" ]; then
-	mkdir -p $ROOT_DIR
-	ifExit "Error making root dir $ROOT_DIR"
+
+# TODO: deal with chain numbers
+# and eg. $CONTAINER_NAME 
+CHAIN_DIR="/home/$USER/.eris/blockchains/$CHAIN_ID"
+
+TMROOT=$CHAIN_DIR
+
+if [ ! -d "$CHAIN_DIR" ]; then
+	mkdir -p $CHAIN_DIR
+	ifExit "Error making root dir $CHAIN_DIR"
 fi
 
 # our root chain
@@ -24,7 +36,9 @@ if [ ! $ECM_PATH ]; then
 	ECM_PATH=.
 fi
 
-export ROOT_DIR
+
+export TMROOT
+export CHAIN_DIR
 export NODE_ADDR
 export ECM_PATH  # set by Dockerfile
 
@@ -42,4 +56,13 @@ case $CMD in
 *)	echo "Enter a command for starting the chain (fetch, new, run)"
 	;;
 esac
+
+#--------------------------------------------------------------------------------
+
+# XXX: assume for now the chain_id is always given
+#
+## if no CHAIN_ID given, use the ref chain
+#if [ ! $CHAIN_ID ]; then
+#	CHAIN_ID=$REFS_CHAIN_ID
+#fi
 

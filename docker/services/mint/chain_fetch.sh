@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 ifExit(){
 	if [ $? -ne 0 ]; then
@@ -10,28 +10,14 @@ ifExit(){
 # fetching a chain means grabbing its genesis.json (from etcb) and putting it in the right folder
 # we also copy in the config.toml, and update grab the seed node from etcb
 
-# get chain id for main reference chain (given by NODE_ADDR)
+## get chain id for main reference chain (given by NODE_ADDR)
 REFS_CHAIN_ID=$(mintinfo --node-addr $NODE_ADDR genesis chain_id)
 ifExit "Error fetching default chain id from $NODE_ADDR"
 REFS_CHAIN_ID=$(echo "$REFS_CHAIN_ID" | tr -d '"') # remove surrounding quotes
 
-# if no CHAIN_ID given, use the ref chain
-if [ ! $CHAIN_ID ]; then
-	CHAIN_ID=$REFS_CHAIN_ID
-fi
-
-# make chain dir
-CHAIN_DIR="${ROOT_DIR}/${CHAIN_ID}"
-echo "Chain directory: ${CHAIN_DIR}"
-if [[ ! -d  $CHAIN_DIR ]]; then
-	mkdir -p $CHAIN_DIR
-	ifExit "Error making chain dir $CHAIN_DIR"
-fi
-
-
 # get the genesis.json for a refs chain from the /genesis rpc endpoint
 # for a different chain, use etcb (ie namereg on the ref chain)
-if [ $CHAIN_ID == $REF_CHAIN_ID    ] ; then
+if [ "$CHAIN_ID" = "$REF_CHAIN_ID"    ] ; then
 	# grab genesis.json and config
 	mintinfo --node-addr $NODE_ADDR genesis > "${CHAIN_DIR}/genesis.json"
 	ifExit "Error fetching genesis.json from $NODE_ADDR"
@@ -54,7 +40,7 @@ else
 	echo "Seed node: ${SEED_NODE}"
 fi
 
-if [[ ! $HOST_NAME ]]; then
+if [ "$HOST_NAME" = "" ]; then
 	HOST_NAME=mint_user
 fi
 
