@@ -11,4 +11,3 @@ RUN groupadd --system $USER \
 
 RUN mkdir /home/$USER/.eris
 RUN chown --recursive $USER /home/$USER/.eris
-# USER eris
