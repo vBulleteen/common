@@ -8,17 +8,16 @@ ENV DEBCONF_NOWARNINGS yes
 ENV TERM linux
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-# User Creation
-ENV USER eris
-ENV ERIS /home/$USER/.eris
+# Where to install binaries
+ENV INSTALL_BASE /usr/local/bin
 
+# User Creation
 # Choose the user id number 1000 to work well with Boot2Docker volumes.  See:
 # https://github.com/boot2docker/boot2docker/issues/581#issuecomment-62491280
+ENV USER eris
+ENV ERIS /home/$USER/.eris
 RUN groupadd --system $USER \
   && useradd --system --create-home --uid 1000 --gid $USER $USER
 
-RUN mkdir /home/$USER/.eris
-RUN chown --recursive $USER:$USER /home/$USER/.eris
-
-# Where to install binaries
-ENV INSTALL_BASE /usr/local/bin
+RUN mkdir $ERIS
+RUN chown --recursive $USER:$USER $ERIS
