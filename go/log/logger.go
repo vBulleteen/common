@@ -127,19 +127,21 @@ LOOP:
 	}
 }
 
+//--------------------------------------------------------------------------------
 // a SafeWriter implements Writer and fires its bytes over the channel
 // to be written to the writer or errWriter
+
 type SafeWriter struct {
 	ch chan []byte
+}
+
+func NewSafeWriter(ch chan []byte) *SafeWriter {
+	return &SafeWriter{ch}
 }
 
 func (sw *SafeWriter) Write(b []byte) (int, error) {
 	sw.ch <- b
 	return len(b), nil
-}
-
-func NewSafeWriter(ch chan []byte) *SafeWriter {
-	return &SafeWriter{ch}
 }
 
 // thread safe writes
