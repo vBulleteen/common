@@ -7,6 +7,19 @@ import (
 	"sync"
 )
 
+type LogLevel uint8
+
+const (
+	LogLevelError LogLevel = iota
+	LogLevelWarn
+	LogLevelInfo
+	LogLevelDebug
+)
+
+const (
+	Version = "0.1.0" // add LogLevel type and Warn level
+)
+
 //--------------------------------------------------------------------------------
 // thread safe logger that fires messages from multiple packages one at a time
 
@@ -31,7 +44,7 @@ var (
 )
 
 type Logger struct {
-	Level int
+	Level LogLevel
 	Pkg   string
 
 	// these are here for easy access
@@ -43,7 +56,7 @@ type Logger struct {
 // add a default logger with pkg name
 func AddLogger(pkg string) *Logger {
 	l := &Logger{
-		Level:     0,
+		Level:     LogLevelError,
 		Pkg:       pkg,
 		Writer:    NewSafeWriter(writeCh),
 		ErrWriter: NewSafeWriter(errorCh),
@@ -55,25 +68,25 @@ func AddLogger(pkg string) *Logger {
 }
 
 // set levels for individual packages
-func SetLogLevel(pkg string, level int) {
+func SetLogLevel(pkg string, level LogLevel) {
 	mtx.Lock()
 	defer mtx.Unlock()
 
 	if l, ok := loggers[pkg]; ok {
 		l.Level = level
-		if level > 1 {
+		if level > LogLevelInfo {
 			// TODO: wrap the writers to print [<pkg>]
 		}
 	}
 }
 
 // set level and writer for all loggers
-func SetLoggers(level int, w io.Writer, ew io.Writer) {
+func SetLoggers(level LogLevel, w io.Writer, ew io.Writer) {
 	mtx.Lock()
 	defer mtx.Unlock()
 	for _, l := range loggers {
 		l.Level = level
-		if l.Level > 1 {
+		if l.Level > LogLevelInfo {
 			// TODO: wrap the writers to print [<pkg>]
 		}
 	}
@@ -167,28 +180,41 @@ func (l *Logger) Errorln(s ...interface{}) {
 	errorln(s...)
 }
 
-// Infof and Infoln write to the Writer if log level >= 1
+// Warnf and Warnln  write to the Writer if log level >= 1
+func (l *Logger) Warnf(s string, args ...interface{}) {
+	if l.Level > LogLevelError {
+		writef(s, args...)
+	}
+}
+
+func (l *Logger) Warnln(s ...interface{}) {
+	if l.Level > LogLevelError {
+		writeln(s...)
+	}
+}
+
+// Infof and Infoln write to the Writer if log level >= 2
 func (l *Logger) Infof(s string, args ...interface{}) {
-	if l.Level > 0 {
+	if l.Level > LogLevelWarn {
 		writef(s, args...)
 	}
 }
 
 func (l *Logger) Infoln(s ...interface{}) {
-	if l.Level > 0 {
+	if l.Level > LogLevelWarn {
 		writeln(s...)
 	}
 }
 
-// Debugf and Debugln write to the Writer if log level >= 2
+// Debugf and Debugln write to the Writer if log level >= 3
 func (l *Logger) Debugf(s string, args ...interface{}) {
-	if l.Level > 1 {
+	if l.Level > LogLevelInfo {
 		writef(s, args...)
 	}
 }
 
 func (l *Logger) Debugln(s ...interface{}) {
-	if l.Level > 1 {
+	if l.Level > LogLevelInfo {
 		writeln(s...)
 	}
 }
