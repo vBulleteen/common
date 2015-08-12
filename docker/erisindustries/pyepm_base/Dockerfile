@@ -1,4 +1,4 @@
-FROM erisindustries/python
+FROM erisindustries/tools
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 RUN pip install pyepm && \

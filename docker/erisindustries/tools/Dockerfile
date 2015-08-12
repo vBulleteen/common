@@ -1,24 +1,21 @@
-FROM ubuntu:14.04
+FROM erisindustries/ubuntu
 MAINTAINER Eris Industries <support@erisindustries.com>
-
-ENV DEBIAN_FRONTEND noninteractive
-ENV INSTALL_PATH /usr/local/bin
-ENV DONT_INSTALL_PATH /usr/bin
 
 RUN apt-get install -qq -y software-properties-common && \
   add-apt-repository -y ppa:ethereum/ethereum > /dev/null && \
   add-apt-repository -y ppa:ethereum/ethereum-dev > /dev/null && \
   apt-get update -qq && \
   apt-get install -qq -y --no-install-recommends \
+    build-essential \
+    curl \
+    gcc \
+    g++ \
+    git \
+    make \
+    libyaml-dev \
+    python-dev \
     lllc \
-    sc \
+    sc=$(apt-cache policy sc | grep ethereum-dev -B 1 | awk 'NR==1 {print $1}') \
     solc && \
+  curl -sL https://bootstrap.pypa.io/get-pip.py | python - && \
   rm -rf /var/lib/apt/lists/*
-
-RUN mv $DONT_INSTALL_PATH/solc $INSTALL_PATH/solc && \
-  mv $DONT_INSTALL_PATH/lllc $INSTALL_PATH/lllc && \
-  mv $DONT_INSTALL_PATH/sc $INSTALL_PATH/sc
-
-VOLUME $INSTALL_PATH
-ENTRYPOINT "solc"
-# use by mounting volumes-from this container
