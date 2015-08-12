@@ -5,7 +5,6 @@ dep=(
   "ubuntu:14.04"
 )
 
-
 for d in "${dep[@]}"
 do
   echo "Pulling => $d"
