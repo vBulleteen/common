@@ -32,6 +32,7 @@ ei=(
   "erisindustries/sunit_base"
   "erisindustries/embark_base"
   "erisindustries/pyepm_base"
+	"erisindustries/bitcoinxt"
 )
 
 for ele in "${ei[@]}"
