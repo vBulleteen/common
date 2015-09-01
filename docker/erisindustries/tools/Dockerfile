@@ -15,6 +15,7 @@ RUN apt-get install -qq -y software-properties-common && \
     libyaml-dev \
     python-dev \
     lllc \
+    jq \
     sc=$(apt-cache policy sc | grep ethereum-dev -B 1 | awk 'NR==1 {print $1}') \
     solc && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python - && \
