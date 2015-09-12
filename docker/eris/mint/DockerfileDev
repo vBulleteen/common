@@ -11,20 +11,18 @@ RUN apt-get update && \
 # configure install
 ENV NAME         tendermint
 ENV REPO         tendermint/tendermint
-ENV BRANCH       net
+ENV BRANCH       master
 ENV BINARY_PATH  ./cmd/$NAME
 ENV CLONE_PATH   $GOPATH/src/github.com/$REPO
 ENV INSTALL_PATH $INSTALL_BASE/$NAME
 
 # install
+ADD . $CLONE_PATH
 WORKDIR $CLONE_PATH
-RUN git clone -q https://github.com/$REPO $CLONE_PATH && \
-  git checkout -q $BRANCH && \
-  go build -o $INSTALL_PATH $BINARY_PATH
+RUN go build -o $INSTALL_PATH $BINARY_PATH
 
 # cleanup install
-RUN rm -rf $GOPATH/src/* && \
-  unset NAME && \
+RUN unset NAME && \
   unset INSTALL_BASE && \
   unset REPO && \
   unset CLONE_PATH && \
@@ -33,7 +31,7 @@ RUN rm -rf $GOPATH/src/* && \
   unset BRANCH
 
 # start script
-COPY start.sh $INSTALL_BASE/start
+COPY eris_start_tendermint.sh $INSTALL_BASE/start
 
 # set user
 USER $USER
