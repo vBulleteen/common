@@ -25,6 +25,10 @@ tobuild=(
   "embark_base"
 )
 
+tobuildscript=(
+  "openbazaar"
+)
+
 pull_deps() {
   for d in "${dep[@]}"
   do
@@ -43,14 +47,30 @@ build_and_push() {
   echo "Building => $repo_base/$ele:$tag"
   echo ""
   echo ""
-  docker build --no-cache -t $repo_base/$ele:$tag $ele
+  docker build --no-cache -t $repo_base/$ele:$tag $ele 1>/dev/null
   echo ""
   echo ""
   echo "Finished Building."
   echo "Pushing => $ele:$tag"
   echo ""
   echo ""
-  docker push $repo_base/$ele:$tag
+  docker push $ele:$tag 1>/dev/null
+  echo "Finished Pushing."
+}
+
+buildscript_and_push() {
+  ele=$1
+  echo "Building => $repo_base/$ele:$tag"
+  echo ""
+  echo ""
+  ./$ele/build.sh
+  echo ""
+  echo ""
+  echo "Finished Building."
+  echo "Pushing => $ele:$tag"
+  echo ""
+  echo ""
+  docker push $ele:$tag 1>/dev/null
   echo "Finished Pushing."
 }
 
@@ -60,5 +80,12 @@ for ele in "${tobuild[@]}"
 do
   set -e
   build_and_push $ele
+  set +e
+done
+
+for ele in "${eib[@]}"
+do
+  set -e
+  buildscript_and_push $ele
   set +e
 done
