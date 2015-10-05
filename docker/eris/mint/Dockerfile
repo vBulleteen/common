@@ -10,10 +10,11 @@ RUN apt-get update && \
 
 # configure install
 ENV NAME         tendermint
-ENV REPO         tendermint/tendermint
-ENV BRANCH       net
+ENV REPO 	eris-ltd/tendermint
+ENV ALIAS 	tendermint/tendermint
+ENV BRANCH       working
 ENV BINARY_PATH  ./cmd/$NAME
-ENV CLONE_PATH   $GOPATH/src/github.com/$REPO
+ENV CLONE_PATH   $GOPATH/src/github.com/$ALIAS
 ENV INSTALL_PATH $INSTALL_BASE/$NAME
 
 # install
