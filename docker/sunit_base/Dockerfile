@@ -1,10 +1,12 @@
-FROM erisindustries/node
+FROM quay.io/eris/gulp
 MAINTAINER Eris Industries <support@erisindustries.com>
 
-RUN npm install --global gulp
+USER root
+
+RUN npm install --global s-unit
 
 # set user
 USER $USER
 WORKDIR $ERIS
 VOLUME $ERIS
-ENTRYPOINT "gulp"
+ENTRYPOINT "sunit"

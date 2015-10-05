@@ -1,4 +1,4 @@
-FROM erisindustries/ubuntu
+FROM quay.io/eris/ubuntu
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 RUN apt-get install -qq -y software-properties-common && \
@@ -16,7 +16,7 @@ RUN apt-get install -qq -y software-properties-common && \
     python-dev \
     lllc \
     jq \
-    sc=$(apt-cache policy sc | grep ethereum-dev -B 1 | awk 'NR==1 {print $1}') \
+    sc \
     solc && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python - && \
   rm -rf /var/lib/apt/lists/*

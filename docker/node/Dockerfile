@@ -1,4 +1,4 @@
-FROM erisindustries/tools
+FROM quay.io/eris/tools
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 RUN echo "setting up node, npm, and io.js" && \

@@ -1,52 +1,64 @@
 #!/usr/bin/env bash
 
+declare -a checks
+
+repo_base="quay.io/eris"
+tag="latest"
+
 dep=(
   "golang:1.4"
   "ubuntu:14.04"
 )
 
-for d in "${dep[@]}"
-do
-  echo "Pulling => $d"
-  echo ""
-  echo ""
-  docker pull $d
-  echo ""
-  echo ""
-  echo "Finished Pulling."
-done
-
-tag="latest"
-
-ei=(
-  "eris/base"
-  "eris/data"
-  "eris/ipfs"
-  "eris/btcd"
-  "eris/mint"
-  "erisindustries/ubuntu"
-  "erisindustries/tools"
-  "eris/eth"
-  "erisindustries/node"
-  "erisindustries/gulp"
-  "erisindustries/sunit_base"
-  "erisindustries/embark_base"
-  "erisindustries/pyepm_base"
-	"erisindustries/bitcoinxt"
+tobuild=(
+  "base"
+  "data"
+  "ipfs"
+  "btcd"
+  "mint"
+  "ubuntu"
+  "tools"
+  "eth"
+  "node"
+  "gulp"
+  "sunit_base"
+  "embark_base"
 )
 
-for ele in "${ei[@]}"
-do
-  echo "Building => $ele:$tag"
+pull_deps() {
+  for d in "${dep[@]}"
+  do
+    echo "Pulling => $d"
+    echo ""
+    echo ""
+    docker pull $d
+    echo ""
+    echo ""
+    echo "Finished Pulling."
+  done
+}
+
+build_and_push() {
+  ele=$1
+  echo "Building => $repo_base/$ele:$tag"
   echo ""
   echo ""
-  docker build -t $ele:$tag $ele
+  docker build --no-cache -t $repo_base/$ele:$tag $ele
   echo ""
   echo ""
   echo "Finished Building."
   echo "Pushing => $ele:$tag"
   echo ""
   echo ""
-  docker push $ele:$tag
+  docker push $repo_base/$ele:$tag
   echo "Finished Pushing."
+}
+
+pull_deps
+
+for ele in "${tobuild[@]}"
+do
+  set -e
+  build_and_push $ele
+  set +e
 done

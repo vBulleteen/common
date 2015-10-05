@@ -1,11 +1,10 @@
-FROM erisindustries/tools
+FROM quay.io/eris/node
 MAINTAINER Eris Industries <support@erisindustries.com>
 
-RUN pip install pyepm && \
-  pyepm -h
+RUN npm install --global gulp
 
 # set user
 USER $USER
 WORKDIR $ERIS
 VOLUME $ERIS
-ENTRYPOINT "pyepm"
+ENTRYPOINT "gulp"
