@@ -21,7 +21,8 @@ var (
 	ErisLtd = path.Join(GoPath, "src", "github.com", "eris-ltd")
 	ErisGH  = "https://github.com/eris-ltd/"
 	// usr, _   = user.Current() // error?!
-	ErisRoot = ResolveErisRoot()
+	ErisRoot          = ResolveErisRoot()
+	ErisContainerRoot = "/home/eris/.eris" // XXX: this is used as root in the `eris/base` image
 
 	// Major Directories
 	ActionsPath        = path.Join(ErisRoot, "actions")
