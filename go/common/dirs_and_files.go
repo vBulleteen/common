@@ -25,15 +25,19 @@ var (
 	ErisContainerRoot = "/home/eris/.eris" // XXX: this is used as root in the `eris/base` image
 
 	// Major Directories
+	AppsPath           = path.Join(ErisRoot, "apps") // previously "dapps"
 	ActionsPath        = path.Join(ErisRoot, "actions")
-	BlockchainsPath    = path.Join(ErisRoot, "chains")
+	ChainsPath         = path.Join(ErisRoot, "chains") // previously "blockchains"
 	DataContainersPath = path.Join(ErisRoot, "data")
-	AppsPath           = path.Join(ErisRoot, "apps")
 	FilesPath          = path.Join(ErisRoot, "files")
 	KeysPath           = path.Join(ErisRoot, "keys")
 	LanguagesPath      = path.Join(ErisRoot, "languages")
 	ServicesPath       = path.Join(ErisRoot, "services")
 	ScratchPath        = path.Join(ErisRoot, "scratch")
+
+	//Deprecated Directories
+	BlockchainsPath = path.Join(ErisRoot, "blockchains")
+	DappsPath       = path.Join(ErisRoot, "dapps")
 
 	// Keys
 	KeysDataPath = path.Join(KeysPath, "data")
