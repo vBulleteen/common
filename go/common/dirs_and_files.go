@@ -50,13 +50,17 @@ var (
 	SerpScratchPath = path.Join(ScratchPath, "ser")
 
 	// Blockchains stuff
-	HEAD = path.Join(BlockchainsPath, "HEAD")
-	Refs = path.Join(BlockchainsPath, "refs")
+	HEAD = path.Join(ChainsPath, "HEAD")
+	Refs = path.Join(ChainsPath, "refs")
 )
 
 var MajorDirs = []string{
-	ErisRoot, ActionsPath, BlockchainsPath, DataContainersPath, AppsPath, FilesPath, KeysPath, LanguagesPath, ServicesPath, KeysDataPath, KeyNamesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath,
+	ErisRoot, ActionsPath, ChainsPath, DataContainersPath, AppsPath, FilesPath, KeysPath, LanguagesPath, ServicesPath, KeysDataPath, KeyNamesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath,
 }
+
+//these ought always len() == len()
+var DeprecatedDirs = []string{BlockchainsPath, DappsPath}
+var RenamedDirs = []string{ChainsPath, AppsPath}
 
 //---------------------------------------------
 // user and process
