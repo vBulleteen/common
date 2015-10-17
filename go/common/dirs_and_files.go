@@ -26,7 +26,7 @@ var (
 
 	// Major Directories
 	ActionsPath        = path.Join(ErisRoot, "actions")
-	BlockchainsPath    = path.Join(ErisRoot, "blockchains")
+	BlockchainsPath    = path.Join(ErisRoot, "chains")
 	DataContainersPath = path.Join(ErisRoot, "data")
 	AppsPath           = path.Join(ErisRoot, "apps")
 	FilesPath          = path.Join(ErisRoot, "files")
