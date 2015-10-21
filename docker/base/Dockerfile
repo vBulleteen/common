@@ -21,3 +21,5 @@ RUN groupadd --system $USER \
 
 RUN mkdir $ERIS
 RUN chown --recursive $USER:$USER $ERIS
+
+WORKDIR $ERIS
