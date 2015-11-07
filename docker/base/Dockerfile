@@ -1,4 +1,4 @@
-FROM golang:1.4
+FROM golang:1.5
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 # shut up debian

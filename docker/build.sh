@@ -6,7 +6,7 @@ repo_base="quay.io/eris"
 tag="latest"
 
 dep=(
-  "golang:1.4"
+  "golang:1.5"
   "ubuntu:14.04"
 )
 
