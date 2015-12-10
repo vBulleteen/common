@@ -162,3 +162,42 @@ func RightPadString(str string, l int) string {
 	return str + zeros
 
 }
+
+func UnLeftPadBytes(slice []byte) []byte {
+	var l int
+	//	for nz, b := range slice {
+	//		if (b != byte(0)) {
+	//			l = nz
+	//			break
+	//		}
+	//	}
+	l = 1
+	unpadded := make([]byte, len(slice)-l)
+	//	copy(unpadded, slice[l:len(slice)])
+
+	return unpadded
+}
+
+func Address(slice []byte) (addr []byte) {
+	if len(slice) < 20 {
+		addr = LeftPadBytes(slice, 20)
+	} else if len(slice) > 20 {
+		addr = slice[len(slice)-20:]
+	} else {
+		addr = slice
+	}
+
+	addr = CopyBytes(addr)
+
+	return
+}
+
+// Copy bytes
+//
+// Returns an exact copy of the provided bytes
+func CopyBytes(b []byte) (copiedBytes []byte) {
+	copiedBytes = make([]byte, len(b))
+	copy(copiedBytes, b)
+
+	return
+}
