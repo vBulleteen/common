@@ -165,15 +165,29 @@ func RightPadString(str string, l int) string {
 
 func UnLeftPadBytes(slice []byte) []byte {
 	var l int
-	//	for nz, b := range slice {
-	//		if (b != byte(0)) {
-	//			l = nz
-	//			break
-	//		}
-	//	}
-	l = 1
+	for i, b := range slice {
+		if (b != byte(0)) {
+			l = i
+			break
+		}
+	}
 	unpadded := make([]byte, len(slice)-l)
-	//	copy(unpadded, slice[l:len(slice)])
+	copy(unpadded, slice[l:len(slice)])
+
+	return unpadded
+}
+
+
+func UnRightPadBytes(slice []byte) []byte {
+	var l int
+	for i, b := range slice {
+		if (b == byte(0)) {
+			l = i
+			break
+		}
+	}
+	unpadded := make([]byte, l)
+	copy(unpadded, slice[:l])
 
 	return unpadded
 }
