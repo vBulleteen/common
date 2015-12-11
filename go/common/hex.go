@@ -192,6 +192,16 @@ func Address(slice []byte) (addr []byte) {
 	return
 }
 
+func AddressStringToBytes(addr string) []byte {
+	var slice []byte
+	for i := 0; i < len(addr); i++ {
+		a, _ := hex.DecodeString(addr[i:i+2])
+		slice = append(slice, a[0])
+		i++
+	}
+	return slice
+}
+
 // Copy bytes
 //
 // Returns an exact copy of the provided bytes
