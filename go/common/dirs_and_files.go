@@ -25,14 +25,13 @@ var (
 	ErisContainerRoot = "/home/eris/.eris" // XXX: this is used as root in the `eris/base` image
 
 	// Major Directories
-	AppsPath           = path.Join(ErisRoot, "apps") // previously "dapps"
-	ActionsPath        = path.Join(ErisRoot, "actions")
-	ChainsPath         = path.Join(ErisRoot, "chains") // previously "blockchains"
-	DataContainersPath = path.Join(ErisRoot, "data")
-	KeysPath           = path.Join(ErisRoot, "keys")
-	LanguagesPath      = path.Join(ErisRoot, "languages")
-	ServicesPath       = path.Join(ErisRoot, "services")
-	ScratchPath        = path.Join(ErisRoot, "scratch")
+	AppsPath      = path.Join(ErisRoot, "apps") // previously "dapps"
+	ActionsPath   = path.Join(ErisRoot, "actions")
+	ChainsPath    = path.Join(ErisRoot, "chains") // previously "blockchains"
+	KeysPath      = path.Join(ErisRoot, "keys")
+	LanguagesPath = path.Join(ErisRoot, "languages")
+	ServicesPath  = path.Join(ErisRoot, "services")
+	ScratchPath   = path.Join(ErisRoot, "scratch")
 
 	//Deprecated Directories
 	BlockchainsPath = path.Join(ErisRoot, "blockchains")
@@ -43,10 +42,11 @@ var (
 	KeyNamesPath = path.Join(KeysPath, "names")
 
 	// Scratch Directories (globally coordinated)
-	EpmScratchPath  = path.Join(ScratchPath, "epm")
-	LllcScratchPath = path.Join(ScratchPath, "lllc")
-	SolcScratchPath = path.Join(ScratchPath, "sol")
-	SerpScratchPath = path.Join(ScratchPath, "ser")
+	EpmScratchPath     = path.Join(ScratchPath, "epm")
+	LllcScratchPath    = path.Join(ScratchPath, "lllc")
+	SolcScratchPath    = path.Join(ScratchPath, "sol")
+	SerpScratchPath    = path.Join(ScratchPath, "ser")
+	DataContainersPath = path.Join(ScratchPath, "data")
 
 	// Blockchains stuff
 	HEAD            = path.Join(ChainsPath, "HEAD")
