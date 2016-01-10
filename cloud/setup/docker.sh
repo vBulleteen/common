@@ -104,11 +104,15 @@ echo
 # Install Docker Version
 
 echo
-wget -qO- https://get.docker.io/gpg | sudo apt-key add -
-sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-sudo apt-get update -qq
-sudo apt-get install -qqy lxc-docker-$DOCKER_VERSION
-# sudo curl -sSL --ssl-req -o $(which docker) https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION
+wget -qO- https://get.docker.io/gpg | apt-key add -
+sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+apt-get update -qq
+apt-get install -qqy docker-engine
+service docker stop
+docker_place=$(which docker)
+rm "$docker_place"
+curl -sSL --ssl-req -o "$docker_place" https://get.docker.com/builds/Linux/x86_64/docker-$DOCKER_VERSION
+chmod 755 "$docker_place"
 echo
 echo "Docker installed"
 
@@ -117,8 +121,7 @@ echo "Docker installed"
 
 echo "Restarting Newly Installed Docker"
 echo
-sudo systemctl enable docker
-sudo systemctl start docker
+service docker start
 sleep 3 # boot time
 
 # ---------------------------------------------------------------------------
