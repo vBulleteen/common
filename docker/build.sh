@@ -18,6 +18,8 @@ tobuild=(
   "mint"
   "ubuntu"
   "tools"
+  "bitcoincore"
+  "bitcoinclassic"
   "eth"
   "node"
   "gulp"
