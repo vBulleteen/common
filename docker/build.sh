@@ -18,13 +18,14 @@ tobuild=(
   "mint"
   "ubuntu"
   "tools"
-  "bitcoincore"
-  "bitcoinclassic"
   "eth"
   "node"
   "gulp"
+  "commonform"
   "sunit_base"
   "embark_base"
+  "bitcoincore"
+  "bitcoinclassic"
 )
 
 tobuildscript=(
@@ -66,7 +67,9 @@ buildscript_and_push() {
   echo "Building => $repo_base/$ele:$tag"
   echo ""
   echo ""
-  ./$ele/build.sh
+  cd $ele
+  ./build.sh
+  cd ..
   echo ""
   echo ""
   echo "Finished Building."
