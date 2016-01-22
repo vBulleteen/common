@@ -29,6 +29,7 @@ var (
 	ChainsPath    = filepath.Join(ErisRoot, "chains") // previously "blockchains"
 	KeysPath      = filepath.Join(ErisRoot, "keys")
 	LanguagesPath = filepath.Join(ErisRoot, "languages")
+	RemotesPath   = filepath.Join(ErisRoot, "remotes")
 	ServicesPath  = filepath.Join(ErisRoot, "services")
 	ScratchPath   = filepath.Join(ErisRoot, "scratch")
 
@@ -54,7 +55,7 @@ var (
 )
 
 var MajorDirs = []string{
-	ErisRoot, ActionsPath, ChainsPath, DefaultChainDir, DataContainersPath, AppsPath, KeysPath, LanguagesPath, ServicesPath, KeysDataPath, KeyNamesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath,
+	ErisRoot, ActionsPath, ChainsPath, DefaultChainDir, DataContainersPath, AppsPath, KeysPath, LanguagesPath, RemotesPath, ServicesPath, KeysDataPath, KeyNamesPath, ScratchPath, EpmScratchPath, LllcScratchPath, SolcScratchPath, SerpScratchPath,
 }
 
 //eris update checks if old dirs exist & migrates them
