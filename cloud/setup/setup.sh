@@ -55,12 +55,16 @@
 # -----------------------------------------------------------------------------
 # USAGE
 
-# setup.sh USER [SERVICESTOSTART] [CHAINSTOSTART]
+# setup.sh [USER] [SERVICESTOSTART] [CHAINSTOSTART]
 
 # -----------------------------------------------------------------------------
 # Set defaults
 
 erisUser=$1
+if [[ "$erisUser" == "" ]]
+then
+  erisUser=$USER
+fi
 services=( $(echo $2 | tr "," "\n") )
 chains=( $(echo $3 | tr "," "\n") )
 toStart=( "${services[@]}" "${chains[@]}" )
