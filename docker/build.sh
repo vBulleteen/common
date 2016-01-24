@@ -29,6 +29,7 @@ tobuild=(
 )
 
 tobuildscript=(
+  "keys"
   "compilers"
   "openbazaar"
 )

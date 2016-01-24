@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 start=`pwd`
-name=compilers
+name=keys
 eris_name=eris-$name
 repo=https://github.com/eris-ltd/$eris_name
 
