@@ -3,7 +3,7 @@
 start=`pwd`
 cd /tmp
 
-git clone git@github.com:eris-ltd/eris-compilers.git
+git clone https://github.com/eris-ltd/eris-compilers
 cd eris-compilers
 docker build --no-cache -t quay.io/eris/compilers . 1>/dev/null
 
