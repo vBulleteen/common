@@ -78,6 +78,36 @@ var MajorDirs = []string{
 	PersonalServicesPath,
 }
 
+// These should only be used by specific tooling rather than eris-cli level
+var ChainsDirs = []string{
+	ChainsPath,
+	DefaultChainPath,
+	AccountsTypePath,
+}
+
+// These should only be used by specific tooling rather than eris-cli level
+var KeysDirs = []string{
+	KeysPath,
+	KeysDataPath,
+	KeyNamesPath,
+}
+
+// These should only be used by specific tooling rather than eris-cli level
+var ServicesDirs = []string{
+	ServicesPath,
+	PersonalServicesPath,
+}
+
+// These should only be used by specific tooling rather than eris-cli level
+var ScratchDirs = []string{
+	ScratchPath,
+	DataContainersPath,
+	LanguagesScratchPath,
+	LllcScratchPath,
+	SolcScratchPath,
+	SerpScratchPath,
+}
+
 //eris update checks if old dirs exist & migrates them
 var DirsToMigrate = map[string]string{
 	BlockchainsPath: ChainsPath,
