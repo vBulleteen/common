@@ -10,8 +10,8 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/eris-ltd/common/Godeps/_workspace/src/github.com/mitchellh/go-homedir"
 	"github.com/eris-ltd/common/go/log" // so we can flush logs on exit/ifexit
-	"github.com/mitchellh/go-homedir"
 )
 
 var (
