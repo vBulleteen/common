@@ -19,7 +19,21 @@ ENV ERIS /home/$USER/.eris
 RUN groupadd --system $USER \
   && useradd --system --create-home --uid 1000 --gid $USER $USER
 
-RUN mkdir $ERIS
-RUN chown --recursive $USER:$USER $ERIS
+# All common/go/common/dirs_and_files.go MajorDirs should be available for dumping into.
+# except the scratch directories.
+RUN mkdir $ERIS && \
+  mkdir $ERIS/actions && \
+  mkdir $ERIS/apps && \
+  mkdir $ERIS/chains && \
+  mkdir $ERIS/chains/default && \
+  mkdir $ERIS/chains/account-types && \
+  mkdir $ERIS/chains/chain-types && \
+  mkdir $ERIS/keys && \
+  mkdir $ERIS/keys/data && \
+  mkdir $ERIS/keys/names && \
+  mkdir $ERIS/remotes && \
+  mkdir $ERIS/services && \
+  mkdir $ERIS/services/global && \
+  chown --recursive $USER:$USER $ERIS
 
 WORKDIR $ERIS
