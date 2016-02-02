@@ -11,21 +11,21 @@ dep=(
 )
 
 tobuild=(
-  "base"
-  "data"
-  "ipfs"
-  "btcd"
-  "mint"
-  "ubuntu"
-  "tools"
-  "eth"
-  "node"
-  "gulp"
-  "commonform"
-  "sunit_base"
-  "embark_base"
-  "bitcoincore"
-  "bitcoinclassic"
+  # "base"
+  # "data"
+  # "ipfs"
+  # "btcd"
+  # "mint"
+  # "ubuntu"
+  # "tools"
+  # "eth"
+  # "node"
+  # "gulp"
+  # "commonform"
+  # "sunit_base"
+  # "embark_base"
+  # "bitcoincore"
+  # "bitcoinclassic"
 )
 
 tobuildscript=(
