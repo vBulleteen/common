@@ -31,7 +31,7 @@ tobuild=(
 tobuildscript=(
   "keys"
   "compilers"
-  "openbazaar"
+  # "openbazaar"
 )
 
 pull_deps() {
