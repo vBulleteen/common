@@ -90,7 +90,7 @@ do
   set +e
 done
 
-for ele in "${eib[@]}"
+for ele in "${tobuildscript[@]}"
 do
   set -e
   buildscript_and_push $ele
