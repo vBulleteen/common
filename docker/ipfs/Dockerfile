@@ -27,16 +27,16 @@ RUN gx --verbose install --global
 # We get the current commit using this hack,
 # so that we don't have to copy all of .git/ into the build context.
 # This saves us quite a bit of image size.
-RUN ref="$(cat .git/HEAD | cut -d' ' -f2)"
-RUN commit="$(cat .git/$ref | head -c 7)" 
-RUN echo "ldflags=-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
+#RUN ref="$(cat .git/HEAD | cut -d' ' -f2)"
+#RUN commit="$(cat .git/$ref | head -c 7)" 
+#RUN echo "ldflags=-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
 # Build and install IPFS and entrypoint script
-RUN cd $CLONE_PATH/cmd/ipfs
-RUN go build -ldflags "-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
+#RUN cd $CLONE_PATH/cmd/ipfs
+#RUN go build -ldflags "-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
 
   #git clone -q https://github.com/$REPO $CLONE_PATH && \
-  #git checkout -q $BRANCH && \
-  #go build -o $INSTALL_PATH $BINARY_PATH
+RUN git checkout -q $BRANCH && \
+  go build -o $INSTALL_PATH $BINARY_PATH
 
 # cleanup install
 RUN rm -rf $GOPATH/src/* && \
