@@ -26,12 +26,12 @@ tobuild=(
   "embark_base"
   "bitcoincore"
   "bitcoinclassic"
+  "openbazaar"
 )
 
 tobuildscript=(
   "keys"
   "compilers"
-  # "openbazaar"
 )
 
 pull_deps() {
