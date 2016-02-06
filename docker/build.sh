@@ -27,6 +27,7 @@ tobuild=(
   "bitcoincore"
   "bitcoinclassic"
   "openbazaar"
+  "zcash"
 )
 
 tobuildscript=(
