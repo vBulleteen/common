@@ -8,7 +8,7 @@ else
   exit 1
 fi
 
-printf "Starting IPFS:\n\n$(ipfs version)\n\nThe marmot says wheeeeeeeeeeee....\n\n"
+printf "Starting IPFS:\n\nThe marmot says wheeeeeeeeeeee....\n\n"
 
 if [ -e $IPFS_PATH/config ]; then
   echo "Found ipfs repository. Not initializing."

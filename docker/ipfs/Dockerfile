@@ -4,7 +4,7 @@ MAINTAINER Eris Industries <support@erisindustries.com>
 # configure install
 ENV NAME         ipfs
 ENV REPO         ipfs/go-ipfs
-ENV BRANCH       master
+ENV TAG          v0.4.0-rc2
 ENV BINARY_PATH  ./cmd/$NAME
 ENV CLONE_PATH   $GOPATH/src/github.com/$REPO
 ENV INSTALL_PATH $INSTALL_BASE/$NAME
@@ -19,24 +19,26 @@ WORKDIR $CLONE_PATH
 RUN go get -u github.com/whyrusleeping/gx
 RUN go get -u github.com/whyrusleeping/gx-go
 RUN git clone -q https://github.com/$REPO $CLONE_PATH
+
 # Point gx to a specific IPFS API
 RUN ([ -z "$GX_IPFS" ] || echo $GX_IPFS > $IPFS_PATH/api)
+
 # Invoke gx
-RUN cd $CLONE_PATH
-RUN gx --verbose install --global 
+RUN cd $CLONE_PATH && \
+  git checkout -q tags/$TAG && \
+  gx --verbose install --global
+
+RUN go build -o $INSTALL_PATH $BINARY_PATH
+
 # We get the current commit using this hack,
 # so that we don't have to copy all of .git/ into the build context.
 # This saves us quite a bit of image size.
 #RUN ref="$(cat .git/HEAD | cut -d' ' -f2)"
-#RUN commit="$(cat .git/$ref | head -c 7)" 
+#RUN commit="$(cat .git/$ref | head -c 7)"
 #RUN echo "ldflags=-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
 # Build and install IPFS and entrypoint script
 #RUN cd $CLONE_PATH/cmd/ipfs
 #RUN go build -ldflags "-X github.com/ipfs/go-ipfs/repo/config.CurrentCommit=$commit"
-
-  #git clone -q https://github.com/$REPO $CLONE_PATH && \
-RUN git checkout -q $BRANCH && \
-  go build -o $INSTALL_PATH $BINARY_PATH
 
 # cleanup install
 RUN rm -rf $GOPATH/src/* && \
@@ -46,7 +48,7 @@ RUN rm -rf $GOPATH/src/* && \
   unset CLONE_PATH && \
   unset BINARY_PATH && \
   unset INSTALL_PATH && \
-  unset BRANCH
+  unset TAG
 
 # start script
 COPY start.sh $INSTALL_BASE/start
