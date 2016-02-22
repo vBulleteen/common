@@ -14,7 +14,7 @@ fi
 
 # TODO: deal with chain numbers
 # and eg. $CONTAINER_NAME
-CHAIN_DIR="$ERIS/blockchains/$CHAIN_ID"
+CHAIN_DIR="$ERIS/chains/$CHAIN_ID"
 
 # set the eth directory
 export ETH_PATH=$CHAIN_DIR

@@ -18,7 +18,7 @@ if [ "$CHAIN_ID" = "" ]
 then
   echo "CHAIN_ID not set. Using eth defaults"
 else
-  CHAIN_DIR="$ERIS/blockchains/$CHAIN_ID"
+  CHAIN_DIR="$ERIS/chains/$CHAIN_ID"
   export ETH_PATH=$CHAIN_DIR
 fi
 
