@@ -15,7 +15,6 @@ tobuild=(
   "data"
   "ipfs"
   "btcd"
-  "mint"
   "ubuntu"
   "tools"
   "eth"
