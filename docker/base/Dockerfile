@@ -24,6 +24,7 @@ RUN groupadd --system $USER \
 RUN mkdir $ERIS && \
   mkdir $ERIS/actions && \
   mkdir $ERIS/apps && \
+  mkdir $ERIS/bundles && \
   mkdir $ERIS/chains && \
   mkdir $ERIS/chains/default && \
   mkdir $ERIS/chains/account-types && \
