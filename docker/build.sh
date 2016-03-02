@@ -65,7 +65,7 @@ build_and_push() {
 
 buildscript_and_push() {
   ele=$1
-  echo "Building => $repo_base/$ele:$tag"
+  echo "Building => $repo_base/$ele"
   echo ""
   echo ""
   cd $ele
@@ -74,10 +74,10 @@ buildscript_and_push() {
   echo ""
   echo ""
   echo "Finished Building."
-  echo "Pushing => $ele:$tag"
+  echo "Pushing => $ele"
   echo ""
   echo ""
-  docker push $repo_base/$ele:$tag 1>/dev/null
+  docker push $repo_base/$ele 1>/dev/null
   echo "Finished Pushing."
 }
 
