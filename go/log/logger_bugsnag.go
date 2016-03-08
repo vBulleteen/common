@@ -12,7 +12,7 @@ import (
 
 // Default API Key. Can be overridden with the ERIS_BUGSNAG_TOKEN
 // environment variable.
-var APIKey = "42a31a690e1761f3851e5a3ffebdc20c"
+var APIKey = "1b9565bb7a4f8fd6dc446f2efd238fa3"
 
 // Bugsnag implements the CrashReporter and the logrus.Hook interfaces.
 type Bugsnag struct {
