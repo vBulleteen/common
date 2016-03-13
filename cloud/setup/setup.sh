@@ -65,6 +65,12 @@ if [[ "$erisUser" == "" ]]
 then
   erisUser=$USER
 fi
+if [[ "$erisUser" == "root" ]]
+then
+  userHome=/root
+else
+  userHome=/home/$erisUser
+fi
 services=( $(echo $2 | tr "," "\n") )
 chains=( $(echo $3 | tr "," "\n") )
 toStart=( "${services[@]}" "${chains[@]}" )
@@ -99,9 +105,9 @@ echo
 # Getting chains
 
 echo "Getting Chain managers"
-curl -sSL -o /home/$erisUser/simplechain.sh https://raw.githubusercontent.com/eris-ltd/common/master/cloud/chains/simplechain.sh
-chmod +x /home/$erisUser/*.sh
-chown $erisUser:$erisUser /home/$erisUser/*.sh
+curl -sSL -o $userHome/simplechain.sh https://raw.githubusercontent.com/eris-ltd/common/master/cloud/chains/simplechain.sh
+chmod +x $userHome/*.sh
+chown $erisUser:$erisUser $userHome/*.sh
 echo "Chain managers acquired."
 echo
 echo
@@ -166,7 +172,7 @@ echo "Finished starting services and chains."
 # -------------------------------------------------------------------------------
 # Cleanup
 
-rm /home/$erisUser/*.sh
+rm $userHome/*.sh
 echo
 echo
 echo "Eris Installed!"
