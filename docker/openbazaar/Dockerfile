@@ -4,7 +4,22 @@ MAINTAINER Eris Industries <support@erisindustries.com>
 # Dependencies
 RUN touch /usr/local/man
 RUN apt-get -qq update && apt-get -y upgrade && \
-  apt-get install -y -qq python-dev python-pip libffi-dev libssl-dev pylint
+  apt-get install -y -qq \
+    python-dev \
+    python-pip \
+    libffi-dev \
+    libssl-dev \
+    pylint
+
+RUN pip install --upgrade \
+  pyopenssl \
+  ndg-httpsclient \
+  pyasn1 \
+  virtualenv \
+  mock \
+  coverage \
+  nose \
+  pylint
 
 RUN git clone https://github.com/OpenBazaar/OpenBazaar-Server.git /OpenBazaar-Server
 WORKDIR /OpenBazaar-Server
@@ -19,4 +34,4 @@ WORKDIR $ERIS
 
 # boot
 VOLUME $ERIS
-ENTRYPOINT python openbazaard.py
+CMD python openbazaard.py start $flags
