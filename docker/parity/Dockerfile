@@ -13,7 +13,7 @@ RUN git clone https://github.com/ethcore/parity /tmp/parity && \
   cargo build --release && \
   cargo install parity --path . --root /usr/local && \
   rm -rf /tmp/parity
-RUN curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh -s -- --uninstall
+RUN curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh -s -- --uninstall --yes
 
 # set user
 USER $USER
