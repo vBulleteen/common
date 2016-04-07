@@ -25,9 +25,10 @@ tobuild=(
   "embark_base"
   "bitcoincore"
   "bitcoinclassic"
-  "openbazaar"
-  "zcash"
   "parity"
+  "openbazaar-server"
+  "openbazaar-client"
+  "zcash"
 )
 
 tobuildscript=(
