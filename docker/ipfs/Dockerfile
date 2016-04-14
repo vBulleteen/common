@@ -4,7 +4,7 @@ MAINTAINER Eris Industries <support@erisindustries.com>
 # configure install
 ENV NAME         ipfs
 ENV REPO         ipfs/go-ipfs
-ENV TAG          v0.4.0-rc2
+ENV TAG          v0.4.0
 ENV BINARY_PATH  ./cmd/$NAME
 ENV CLONE_PATH   $GOPATH/src/github.com/$REPO
 ENV INSTALL_PATH $INSTALL_BASE/$NAME
