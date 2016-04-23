@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"sort"
 
-	"github.com/eris-ltd/common/Godeps/_workspace/src/github.com/docker/docker/pkg/term"
+	"github.com/docker/docker/pkg/term"
 
-	log "github.com/eris-ltd/common/Godeps/_workspace/src/github.com/Sirupsen/logrus"
+	log "github.com/Sirupsen/logrus"
 )
 
 type ErisFormatter struct {

@@ -6,8 +6,8 @@ import (
 	"os"
 	"runtime/debug"
 
-	log "github.com/eris-ltd/common/Godeps/_workspace/src/github.com/Sirupsen/logrus"
-	bugsnag "github.com/eris-ltd/common/Godeps/_workspace/src/github.com/bugsnag/bugsnag-go"
+	log "github.com/Sirupsen/logrus"
+	bugsnag "github.com/bugsnag/bugsnag-go"
 )
 
 // Default API Key. Can be overridden with the ERIS_BUGSNAG_TOKEN
