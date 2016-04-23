@@ -3,7 +3,7 @@ package log
 import (
 	"runtime/debug"
 
-	log "github.com/eris-ltd/common/Godeps/_workspace/src/github.com/Sirupsen/logrus"
+	log "github.com/Sirupsen/logrus"
 )
 
 // Stub is a void implementation of the CrashReporter and logrus Hook interfaces.
