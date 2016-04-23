@@ -1,0 +1,9 @@
+package: github.com/eris-ltd/common
+import:
+- package: github.com/Sirupsen/logrus
+- package: github.com/bugsnag/bugsnag-go
+- package: github.com/docker/docker
+  subpackages:
+  - pkg/term
+- package: github.com/mitchellh/go-homedir
+- package: github.com/spf13/cobra
