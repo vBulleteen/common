@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"path"
 	"strings"
@@ -22,7 +23,7 @@ func GetFromIPFS(hash, fileName, dirName string) error {
 		"file": fileName,
 		"hash": hash,
 	}).Warn("Getting file from IPFS")
-	return DownloadFromUrlToFile(url, fileName, dirName)
+	return DownloadFromUrlToFile(url, fileName, dirName, "") // no proxy for IPFS ?
 }
 
 func CatFromIPFS(fileHash string) (string, error) {
@@ -105,8 +106,8 @@ func ListPinnedFromIPFS() (string, error) {
 	return result, nil
 }
 
-func DownloadFromUrlToFile(url, fileName, dirName string) error {
-	tokens := strings.Split(url, "/")
+func DownloadFromUrlToFile(url0, fileName, dirName, proxyURL string) error {
+	tokens := strings.Split(url0, "/")
 	if fileName == "" {
 		fileName = tokens[len(tokens)-1]
 	}
@@ -153,14 +154,25 @@ func DownloadFromUrlToFile(url, fileName, dirName string) error {
 		defer outputFile.Close()
 	}
 
-	// adding manual timeouts as IPFS hangs for a while
-	transport := http.Transport{
-		Dial: dialTimeout,
+	transport := http.Transport{Dial: dialTimeout}
+
+	if proxyURL == "" {
+		transport = http.Transport{Proxy: nil}
+	} else {
+		urli := url.URL{}
+		urlProxy, err := urli.Parse(proxyURL)
+		if err != nil {
+			return err
+		}
+		transport = http.Transport{Proxy: http.ProxyURL(urlProxy)}
 	}
+
+	// adding manual timeouts as IPFS hangs for a while
 	client := http.Client{
 		Transport: &transport,
 	}
-	response, err := client.Get(url)
+
+	response, err := client.Get(url0)
 	if err != nil {
 		return err
 	}
