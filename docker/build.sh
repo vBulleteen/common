@@ -18,6 +18,7 @@ tobuild=(
   "ubuntu"
   "tools"
   "eth"
+  "geth"
   "node"
   "gulp"
   "commonform"
