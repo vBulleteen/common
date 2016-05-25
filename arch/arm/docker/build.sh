@@ -2,8 +2,8 @@
 
 declare -a checks
 
-repo_base="eris4iot"
-tag="armhf"
+repo_base="quay.io/eris"
+tag="arm"
 
 dep=(
   "armhfbuild/golang"

@@ -92,16 +92,15 @@ export DEBIAN_FRONTEND=noninteractive
 curl -sSL https://deb.nodesource.com/setup_"$NODEVERSION".x | sudo -E bash - &>/dev/null
 sudo apt-get install -y bc jq gcc git build-essential nodejs &>/dev/null
 
-## Install Go 
-#curl -sSL https://storage.googleapis.com/golang/go"$GOVERSION".linux-amd64.tar.gz | sudo tar -C /usr/local -xzf - &>/dev/null
+# -$- Install arm go -$-
 if [ ! -d "/usr/local/go$GOVERSION" ]; then
     curl -sSL https://www.dropbox.com/s/1v8uxdn6oo48t2g/go1.6.tar.gz?dl=0 | sudo tar -C /usr/local -xzf - >/dev/null
     echo "Installed go$GOVERSION to /usr/local/"
 fi
 
+# -$- Install arm docker -$-
 if [ -n "$INSTALL_DOCKER" ]
 then
-  #curl -sSL https://get.docker.com/ | sudo -E bash - &>/dev/null
   sudo apt-get install docker
   curl -sSL 'https://github.com/armhf-docker-library/binaries/blob/master/docker-1.9.1?raw=true' | sudo tee /usr/bin/docker >/dev/null && sudo chmod +x /usr/bin/docker
 fi
