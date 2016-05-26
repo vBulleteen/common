@@ -1,4 +1,4 @@
-FROM eris4iot/node:armhf
+FROM quay.io/eris/node:arm
 
 RUN npm --global install commonform-cli
 

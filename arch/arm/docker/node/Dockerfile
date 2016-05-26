@@ -1,4 +1,4 @@
-FROM eris4iot/tools:armhf
+FROM quay.io/eris/tools:arm
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 RUN echo "setting up node, npm, and io.js" && \

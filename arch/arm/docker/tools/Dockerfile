@@ -1,4 +1,4 @@
-FROM eris4iot/ubuntu:armhf
+FROM quay.io/eris/ubuntu:arm
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 RUN apt-get update -qq && \

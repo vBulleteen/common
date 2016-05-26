@@ -1,4 +1,4 @@
-FROM eris4iot/tools:armhf
+FROM quay.io/eris/tools:arm
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 ENV NAME bitcoinclassic

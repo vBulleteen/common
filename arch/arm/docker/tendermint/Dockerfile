@@ -1,5 +1,5 @@
 # Pull base image.
-FROM quay.io/eris/base
+FROM quay.io/eris/base:arm
 MAINTAINER Eris Industries <support@erisindustries.com>
 
 

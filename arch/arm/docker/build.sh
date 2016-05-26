@@ -20,15 +20,9 @@ tobuild=(
   ##"eth"
   ##"geth"
   "node"
-  "gulp"
   "commonform"
-  ##"sunit_base"
-  ##"embark_base"
   ##"bitcoincore"
   ##"bitcoinclassic"
-  ##"parity"
-  ##"openbazaar-server"
-  ##"openbazaar-client"
   ##"zcash"
 )
 
