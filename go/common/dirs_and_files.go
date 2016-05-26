@@ -11,7 +11,6 @@ import (
 	"strings"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/eris-ltd/common/go/log" // so we can flush logs on exit/ifexit
 )
 
 var (
@@ -131,7 +130,6 @@ func Usr() string {
 func Exit(err error) {
 	status := 0
 	if err != nil {
-		log.Flush()
 		fmt.Println(err)
 		status = 1
 	}
@@ -140,7 +138,6 @@ func Exit(err error) {
 
 func IfExit(err error) {
 	if err != nil {
-		log.Flush()
 		fmt.Println(err)
 		os.Exit(1)
 	}
