@@ -17,7 +17,6 @@ tobuild=(
   "btcd"
   "ubuntu"
   "tools"
-  ##"eth"
   ##"geth"
   "node"
   "commonform"

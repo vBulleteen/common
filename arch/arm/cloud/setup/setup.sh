@@ -150,8 +150,8 @@ echo
 echo
 echo "Building eris."
 pre_dir=$pwd
-go get -d github.com/shuangjj/eris-cli/cmd/eris
-cd $GOPATH/src/github.com/shuangjj/eris-cli/cmd/eris
+go get -d github.com/eris-ltd/eris-cli/cmd/eris
+cd $GOPATH/src/github.com/eris-ltd/eris-cli/cmd/eris
 git checkout armhf
 go build
 go install
