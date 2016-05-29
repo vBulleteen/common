@@ -45,9 +45,9 @@ var (
 	// Scratch Directories (basically eris' cache) (globally coordinated)
 	DataContainersPath   = filepath.Join(ScratchPath, "data")
 	LanguagesScratchPath = filepath.Join(ScratchPath, "languages") // previously "~/.eris/languages"
-	LllcScratchPath      = filepath.Join(ScratchPath, "lllc")
-	SolcScratchPath      = filepath.Join(ScratchPath, "sol")
-	SerpScratchPath      = filepath.Join(ScratchPath, "ser")
+	LllcScratchPath      = filepath.Join(LanguagesScratchPath, "lllc")
+	SolcScratchPath      = filepath.Join(LanguagesScratchPath, "sol")
+	SerpScratchPath      = filepath.Join(LanguagesScratchPath, "ser")
 
 	// Services Directories
 	PersonalServicesPath = filepath.Join(ServicesPath, "global")
