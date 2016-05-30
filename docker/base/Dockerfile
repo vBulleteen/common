@@ -1,12 +1,16 @@
-FROM golang:1.5
+FROM alpine:3.3
 MAINTAINER Eris Industries <support@erisindustries.com>
 
-# shut up debian
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBIAN_PRIORITY critical
-ENV DEBCONF_NOWARNINGS yes
-ENV TERM linux
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+RUN apk update; apk add go git bash
+
+# Add vendor support to Go
+ENV GO15VENDOREXPERIMENT 1
+
+# Go stuff
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 # Where to install binaries
 ENV INSTALL_BASE /usr/local/bin
@@ -16,8 +20,7 @@ ENV INSTALL_BASE /usr/local/bin
 # https://github.com/boot2docker/boot2docker/issues/581#issuecomment-62491280
 ENV USER eris
 ENV ERIS /home/$USER/.eris
-RUN groupadd --system $USER \
-  && useradd --system --create-home --uid 1000 --gid $USER $USER
+RUN addgroup -S $USER && adduser -s /bin/bash -S -D -u 1000 $USER $USER
 
 # All common/go/common/dirs_and_files.go MajorDirs should be available for dumping into.
 # except the scratch directories.
