@@ -11,7 +11,7 @@ dep=(
 )
 
 tobuild=(
-  "base"
+  #"base"
   "data"
   "ipfs"
   "btcd"
