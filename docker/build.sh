@@ -12,7 +12,7 @@ dep=(
 
 tobuild=(
   #"base"
-  "data"
+  #"data"
   "ipfs"
   "btcd"
   "ubuntu"
