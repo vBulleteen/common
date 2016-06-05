@@ -43,7 +43,7 @@ EXPOSE 18334
 # persist data, set user
 WORKDIR $ERIS
 ENV DATA_DIR /home/$USER/.zcash
-RUN mkdir --parents /home/$USER/.zcash && \
+RUN mkdir -p /home/$USER/.zcash && \
   touch $DATA_DIR/bitcoin.conf && \
   echo testnet=1 >> $DATA_DIR/bitcoin.conf && \
   echo addnode=alphatestnet.z.cash >> $DATA_DIR/bitcoin.conf && \

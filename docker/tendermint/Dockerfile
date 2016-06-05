@@ -23,7 +23,7 @@ WORKDIR $ERIS
 
 # configure
 ENV TMROOT $ERIS/chains/tendermint
-RUN mkdir --parents $TMROOT
+RUN mkdir -p $TMROOT
 
 # boot
 VOLUME $ERIS

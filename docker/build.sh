@@ -7,10 +7,13 @@ tag="latest"
 
 dep=(
   "ubuntu:14.04"
+  # should match digest in base/Dockerfile (line 1)
+  "alpine@sha256:4b7f27ae8ce4ce6019ce41fa4275296f31b7b730b3eeb5fecf80f1b60959343d"
 )
 
 tobuild=(
   "base"
+  "build"
   "ipfs"
   "btcd"
   "ubuntu"

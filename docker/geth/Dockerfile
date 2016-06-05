@@ -16,7 +16,7 @@ WORKDIR $ERIS
 
 # configure $ETH_PATH is a default, will usually not go to that for test chains
 ENV ETH_PATH $ERIS/chains/ethereum
-RUN mkdir --parents $ETH_PATH
+RUN mkdir -p $ETH_PATH
 
 # boot
 VOLUME $ERIS

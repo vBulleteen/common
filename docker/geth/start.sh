@@ -20,7 +20,7 @@ CHAIN_DIR="$ERIS/chains/$CHAIN_ID"
 export ETH_PATH=$CHAIN_DIR
 
 if [ ! -d "$ETH_PATH" ]; then
-  mkdir --parents $ETH_PATH
+  mkdir -p $ETH_PATH
 fi
 
 # Test whether the mounted directory is writable for us
@@ -124,7 +124,7 @@ else
   echo "$KEY" > $ERIS/key
   ADDR=$(cat $ERIS/key | jq '.address')
   ADDR=$(echo "$ADDR" | tr -d '"')
-  mkdir --parents $ETH_PATH/keystore/$ADDR
+  mkdir -p $ETH_PATH/keystore/$ADDR
   mv $ERIS/key $ETH_PATH/keystore/$ADDR/$ADDR
 fi
 

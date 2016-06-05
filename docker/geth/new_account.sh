@@ -24,7 +24,7 @@ fi
 
 if [ ! -d "$ETH_PATH" ]
 then
-  mkdir --parents $ETH_PATH
+  mkdir -p $ETH_PATH
 fi
 
 # ------------------------------------------------
