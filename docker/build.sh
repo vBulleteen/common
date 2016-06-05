@@ -6,13 +6,11 @@ repo_base="quay.io/eris"
 tag="latest"
 
 dep=(
-  "golang:1.5"
   "ubuntu:14.04"
 )
 
 tobuild=(
-  #"base"
-  #"data"
+  "base"
   "ipfs"
   "btcd"
   "ubuntu"
@@ -33,7 +31,6 @@ tobuild=(
 )
 
 tobuildscript=(
-  "keys"
   "compilers"
 )
 
