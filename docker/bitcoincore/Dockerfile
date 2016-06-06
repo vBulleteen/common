@@ -30,7 +30,7 @@ EXPOSE 18334
 # persist data, set user
 WORKDIR $ERIS
 ENV DATA_DIR $ERIS/scratch/data/$NAME
-RUN mkdir --parents $DATA_DIR && \
+RUN mkdir -p $DATA_DIR && \
   touch $DATA_DIR/bitcoin.conf && \
   echo rpcuser=bitcoinrpc >> $DATA_DIR/bitcoin.conf && \
   echo rpcpassword=Hze7btPVjmo6iJmUCdB5DXppCzZWaK8PEDHUJYYAYuFC >> $DATA_DIR/bitcoin.conf && \

@@ -6,13 +6,15 @@ repo_base="quay.io/eris"
 tag="latest"
 
 dep=(
-  "golang:1.5"
   "ubuntu:14.04"
+  # should match digest in base/Dockerfile (line 1)
+  #"alpine@sha256:4b7f27ae8ce4ce6019ce41fa4275296f31b7b730b3eeb5fecf80f1b60959343d"
 )
 
 tobuild=(
+  # these two images left stable for now until base (ubuntu) is fully deprecated.
   #"base"
-  #"data"
+  #"build"
   "ipfs"
   "btcd"
   "ubuntu"
@@ -33,7 +35,6 @@ tobuild=(
 )
 
 tobuildscript=(
-  "keys"
   "compilers"
 )
 
