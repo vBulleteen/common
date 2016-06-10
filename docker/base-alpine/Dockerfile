@@ -1,7 +1,7 @@
 FROM alpine@sha256:7d7d68e60bec044b1821208884a2a4c9de64dfd5807f04cd32ffa5f5232d7848
 MAINTAINER Eris Industries <support@erisindustries.com>
 
-RUN apk update; apk add go git bash
+RUN apk update; apk add go git bash coreutils
 
 # Add vendor support to Go
 ENV GO15VENDOREXPERIMENT 1
