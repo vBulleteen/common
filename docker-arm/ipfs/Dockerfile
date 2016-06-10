@@ -58,7 +58,7 @@ USER $USER
 WORKDIR $ERIS
 
 # configure
-RUN mkdir --parents $IPFS_PATH
+RUN mkdir -p $IPFS_PATH
 
 # boot
 VOLUME $ERIS

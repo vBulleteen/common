@@ -80,6 +80,7 @@ toStart=( "${services[@]}" "${chains[@]}" )
 
 GOVERSION="1.6"
 NODEVERSION="4"
+DOCKER_HYPRIOT_VERSION="1.10.3-1"
 
 # -----------------------------------------------------------------------------
 # Install dependencies
@@ -94,15 +95,17 @@ sudo apt-get install -y bc jq gcc git build-essential nodejs &>/dev/null
 
 # -$- Install arm go -$-
 if [ ! -d "/usr/local/go$GOVERSION" ]; then
-    curl -sSL https://www.dropbox.com/s/1v8uxdn6oo48t2g/go1.6.tar.gz?dl=0 | sudo tar -C /usr/local -xzf - >/dev/null
-    echo "Installed go$GOVERSION to /usr/local/"
+  curl -sSL https://www.dropbox.com/s/1v8uxdn6oo48t2g/go1.6.tar.gz?dl=0 | sudo tar -C /usr/local -xzf - >/dev/null
+  echo "Installed go$GOVERSION to /usr/local/"
 fi
 
-# -$- Install arm docker -$-
+# -$- Install hypriot docker [http://blog.hypriot.com/downloads/] -$-
 if [ -n "$INSTALL_DOCKER" ]
 then
-  sudo apt-get install docker
-  curl -sSL 'https://github.com/armhf-docker-library/binaries/blob/master/docker-1.9.1?raw=true' | sudo tee /usr/bin/docker >/dev/null && sudo chmod +x /usr/bin/docker
+  wget https://downloads.hypriot.com/docker-hypriot_"$DOCKER_HYPRIOT_VERSION"_armhf.deb &&
+  dpkg -i docker-hypriot_"$DOCKER_HYPRIOT_VERSION"_armhf.deb &&
+  rm docker-hypriot_"$DOCKER_HYPRIOT_VERSION"_armhf.deb
+  echo "Installed docker-hypriot_${DOCKER_HYPRIOT_VERSION}_armhf"
 fi
 
 sudo usermod -a -G docker $erisUser &>/dev/null
@@ -124,7 +127,7 @@ echo
 # -----------------------------------------------------------------------------
 # Install eris
 
-sudo -u "$erisUser" -i env START="`printf ",%s" "${toStart[@]}"`" bash <<'EOF'
+sudo -u "$erisUser" -i env START=$(printf ",%s" "${toStart[@]}") bash <<'EOF'
 GOVERSION="1.6"
 start=( $(echo $START | tr "," "\n") )
 echo "Setting up Go for the user"

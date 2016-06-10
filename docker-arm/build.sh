@@ -6,7 +6,7 @@ repo_base="quay.io/eris"
 tag="arm"
 
 dep=(
-  "armhfbuild/golang"
+  "armbuild/alpine:3.3"
   "armv7/armhf-ubuntu:14.04"
 )
 
