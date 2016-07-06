@@ -9,8 +9,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-
-	"github.com/mitchellh/go-homedir"
 )
 
 var (
@@ -123,8 +121,16 @@ var DirsToMigrate = map[string]string{
 // user and process
 
 func Usr() string {
-	u, _ := homedir.Dir()
-	return u
+	if runtime.GOOS == "windows" {
+		drive := os.Getenv("HOMEDRIVE")
+		path := os.Getenv("HOMEPATH")
+		if drive == "" || path == "" {
+			return os.Getenv("USERPROFILE")
+		}
+		return drive + path
+	} else {
+		return os.Getenv("HOME")
+	}
 }
 
 func Exit(err error) {
