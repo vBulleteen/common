@@ -1,3 +1,0 @@
-package: github.com/eris-ltd/common
-import:
-- package: github.com/mitchellh/go-homedir
