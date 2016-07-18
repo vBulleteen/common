@@ -116,7 +116,7 @@ func DownloadFromUrlToFile(url0, fileName, dirName, proxyURL string) error {
 	endPath := path.Join(dirName, fileName)
 	if dirName != "" {
 		log.WithFields(log.Fields{
-			"from": url,
+			"from": url0,
 			"to":   endPath,
 		}).Warn("Downloading")
 		checkDir, err := os.Stat(dirName)
@@ -132,7 +132,7 @@ func DownloadFromUrlToFile(url0, fileName, dirName, proxyURL string) error {
 		}
 	} else {
 		log.WithFields(log.Fields{
-			"from": url,
+			"from": url0,
 			"to":   fileName,
 		}).Warn("Downloading")
 	}
