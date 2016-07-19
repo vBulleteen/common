@@ -68,7 +68,7 @@ var MajorDirs = []string{
 	ChainTypePath,
 	KeysPath,
 	KeysDataPath,
-	KeyNamesPath,
+	KeysNamesPath,
 	RemotesPath,
 	ScratchPath,
 	DataContainersPath,
@@ -92,7 +92,7 @@ var ChainsDirs = []string{
 var KeysDirs = []string{
 	KeysPath,
 	KeysDataPath,
-	KeyNamesPath,
+	KeysNamesPath,
 }
 
 // These should only be used by specific tooling rather than eris-cli level
