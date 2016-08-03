@@ -22,6 +22,8 @@ ENV USER eris
 ENV ERIS /home/$USER/.eris
 RUN addgroup -S $USER && adduser -s /bin/bash -S -D -u 1000 $USER $USER
 
+RUN echo "alias ls='ls --color=never'" > /home/eris/.profile
+
 # All common/go/common/dirs_and_files.go MajorDirs should be available for dumping into.
 # except the scratch directories.
 RUN mkdir $ERIS && \
@@ -41,3 +43,5 @@ RUN mkdir $ERIS && \
   chown --recursive $USER:$USER $ERIS
 
 WORKDIR $ERIS
+
+VOLUME /home/eris/.eris
