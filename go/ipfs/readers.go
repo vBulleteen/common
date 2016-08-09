@@ -16,8 +16,8 @@ import (
 	log "github.com/eris-ltd/eris-logger"
 )
 
-func GetFromIPFS(hash, fileName, dirName, port string) error {
-	url := IPFSBaseGatewayUrl("", port) + hash // [csk] why isn't this using a gateway argument like the Put?
+func GetFromIPFS(hash, fileName, dirName, gateway, port string) error {
+	url := IPFSBaseGatewayUrl(gateway, port) + hash
 	log.WithFields(log.Fields{
 		"file": fileName,
 		"hash": hash,
