@@ -1,0 +1,20 @@
+{
+  "name": "Dual_Integration_Example_Application",
+  "description": "And example application for showing how to Dual Integrate smart and prose contracts using common form, docusign, and eris",
+  "repository": "gitlab:eris-ltd/common",
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "commonform-html": "^0.2.2",
+    "commonform-markup-parse": "^0.4.0",
+    "eris-contracts": "^0.13.3",
+    "express": "^4.14.0",
+    "ipfs-api": "^7.0.0",
+    "pug": "^2.0.0-beta5",
+    "streamifier": "^0.1.1"
+  }
+}

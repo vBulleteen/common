@@ -1,0 +1,47 @@
+html
+  head
+    title= title
+  body
+    div
+        table
+            thead
+                tr
+                    th Key
+                    th Value
+            tbody
+                tr
+                    td Code Contract's Address
+                    td
+                        a(href=codeContractAddress) #{codeContractAddress}
+                tr
+                    td Contract's IPFSHash (Local IPFS)
+                    td
+                        a(href='http://localhost:8080/ipfs/' + proseContractsHash) #{proseContractsHash}
+                tr
+                    td Contract's IPFSHash (IPFS Gateway)
+                    td
+                        a(href='https://gateway.ipfs.io/ipfs/' + proseContractsHash) #{proseContractsHash}
+                tr
+                    td Contract's Factory Address
+                    td= factoryContractAddress
+                tr
+                    td Party A's Name
+                    td= partyAName
+                tr
+                    td Party A's Address
+                    td= partyAAddress
+                tr
+                    td Party B's Name
+                    td= partyBName
+                tr
+                    td Party B's Address
+                    td= partyBAddress
+                tr
+                    td Contract's Length
+                    td #{numberOfMonths} months
+                tr
+    div
+        h4 Contract's Prose:
+        div !{proseContractAsHTML}
+    p
+        a(href='/') Go Home

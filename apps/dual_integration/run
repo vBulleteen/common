@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# tear down
+eris chains rm dual_integrator --data --force --dir --file &>/dev/null
+rm -rf ./abi
+rm -rf ./accounts.json
+rm -rf ./jobs_output.json
+
+# clean slate
+eris chains make dual_integrator --account-types=Full:1,Participant:1
+eris chains new dual_integrator --dir dual_integrator/dual_integrator_full_000
+addr=$(cat $HOME/.eris/chains/dual_integrator/addresses.csv | grep "full_000" | cut -d ',' -f 1)
+addr2=$(cat $HOME/.eris/chains/dual_integrator/addresses.csv | grep "participant_000" | cut -d ',' -f 1)
+eris chains checkout dual_integrator
+eris pkgs do --chain "\$chain" --address $addr --local-compiler  --set "addr1=$addr" --set "addr2=$addr2"
+eris services start ipfs
+cp $HOME/.eris/chains/dual_integrator/accounts.json .
+
+npm start

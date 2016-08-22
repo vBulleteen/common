@@ -1,0 +1,40 @@
+html
+  head
+    title= title
+  body
+    h1 Hello! I'm the marmot that demonstrates <a href="https://erisindustries.com/components/erislegal/">dual integration</a>
+    div
+        h4 Defaults for this Application
+        table
+            tbody
+                tr
+                    td Party A's Address
+                    td= partyAAddress
+                tr
+                    td Party B's Address
+                    td= partyBAddress
+                tr
+                    td Factory's Address
+                    td= factoryContractAddress
+    hr
+    div
+        h4 Code Contracts That Exist
+        ul
+          each addr in factoryContractAddresses.length ? factoryContractAddresses : ['There are no contracts right now']
+            li
+                a(href='/contract/' + addr) #{addr}
+    hr
+    div
+        h4 Make a New Code|Prose Contract Set
+        form(action="/contract", method="post")
+            div.input
+                span.label(for='partyAName') Name of Party A
+                input(id="partyAName", type="text", name="partyAName", value=partyAName)
+            div.input
+                span.label(for='partyBName') Name of Party B
+                input(id="partyBName", type="text", name="partyBName", value=partyBName)
+            div.input
+                span.label(for='numberOfMonths') Number of Months
+                input(id="numberOfMonths", type="text", name="numberOfMonths", value=numberOfMonths)
+            div.actions
+                input(type="submit", value="Make a New Set of Contracts")

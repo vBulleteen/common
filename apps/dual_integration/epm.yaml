@@ -1,0 +1,120 @@
+jobs:
+
+# set some defaults so we can assert that the system is appropriately put together
+- name: lengthofTestInstrument
+  job:
+    set:
+      val: 5
+
+- name: partyAName
+  job:
+    set:
+      val: "ABI, Inc."
+
+- name: partyBName
+  job:
+    set:
+      val: "Marmatoshi Nakaburrow"
+
+- name: dummyHash
+  job:
+    set:
+      val: "Qmc5m94Gu7z62RC8waSKkZUrCCBJPyHbkpmGzEePxy2oXJ"
+
+# deploy all the contracts (including the DualIntegrator && the IntegratorFactory)
+#   deploying all the contracts gives us the ABIs for both which we'll need to test
+#   that the system is appropriately setup.
+- name: deployIntegratorFactory
+  job:
+    deploy:
+      contract: code/dual_integrator.sol
+      instance: all
+      wait: true
+
+# call the factory with the parameters; the function returns the address of the
+#   DualIntegrator contract which was deployed via the factory (not on the initial,
+#   dummy deployment that happened only to get the ABI).
+- name: createIntegrator
+  job:
+    call:
+      destination: $deployIntegratorFactory
+      function: createInstrument
+      data:
+        - $lengthofTestInstrument
+        - $addr1
+        - $addr2
+        - $partyAName
+        - $partyBName
+      abi: IntegratorFactory
+      wait: true
+
+# test that the factory appropriately instantiated a DualIntegrator contract.
+- name: getIntegratorParms
+  job:
+    query-contract:
+      destination: $createIntegrator
+      function: getParams
+      abi: DualIntegrator
+
+- name: checkInstrumentLength
+  job:
+    assert:
+      key: $getIntegratorParms._months
+      relation: eq
+      val: $lengthofTestInstrument
+
+- name: checkPartyAAddress
+  job:
+    assert:
+      key: $getIntegratorParms._partyAAddress
+      relation: eq
+      val: $addr1
+
+- name: checkPartyBAddress
+  job:
+    assert:
+      key: $getIntegratorParms._partyBAddress
+      relation: eq
+      val: $addr2
+
+# set a dummy hash
+- name: setDummyHash
+  job:
+    call:
+      destination: $createIntegrator
+      function: setHash
+      data:
+        - $dummyHash
+      abi: DualIntegrator
+      wait: true
+
+# check dummy hash
+- name: getIntegratorNames
+  job:
+    query-contract:
+      destination: $createIntegrator
+      function: getNames
+      abi: DualIntegrator
+
+- name: checkHash
+  job:
+    assert:
+      key: $getIntegratorNames._hash
+      relation: eq
+      val: $dummyHash
+
+# - name: checkPartyAName
+#   job:
+#     assert:
+#       key: $getIntegratorNames._partyAName
+#       relation: eq
+#       val: $partyAName
+
+# - name: checkPartyBName
+#   job:
+#     assert:
+#       key: $getIntegratorNames._partyBName
+#       relation: eq
+#       val: $partyBName
+
+# in a real application at this point we'd remove the dummy contracts used for testing
