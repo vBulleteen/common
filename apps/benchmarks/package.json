@@ -1,0 +1,42 @@
+{
+  "name": "slams",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "eris-contracts": "^0.13.3",
+    "eris-db": "^0.15.0",
+    "fairmont": "^1.1.6",
+    "humanize-duration": "^3.9.1",
+    "is-promise": "^2.1.0",
+    "mz": "^2.4.0",
+    "numeral": "^1.5.3",
+    "ramda": "^0.21.0",
+    "solc": "^0.3.6",
+    "untildify": "^3.0.2"
+  },
+  "devDependencies": {
+    "husky": "^0.11.6",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.0",
+    "standard": "^8.0.0-beta.5"
+  },
+  "standard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it",
+      "run"
+    ]
+  }
+}
