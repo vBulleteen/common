@@ -29,7 +29,6 @@ RUN addgroup -S $USER && adduser -s /bin/bash -S -D -u 1000 $USER $USER
 # All common/go/common/dirs_and_files.go MajorDirs should be available for dumping into.
 # except the scratch directories.
 RUN mkdir $ERIS && \
-  mkdir $ERIS/actions && \
   mkdir $ERIS/apps && \
   mkdir $ERIS/bundles && \
   mkdir $ERIS/chains && \

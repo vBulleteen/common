@@ -27,7 +27,6 @@ RUN echo "alias ls='ls --color=never'" > /home/eris/.profile
 # All common/go/common/dirs_and_files.go MajorDirs should be available for dumping into.
 # except the scratch directories.
 RUN mkdir $ERIS && \
-  mkdir $ERIS/actions && \
   mkdir $ERIS/apps && \
   mkdir $ERIS/bundles && \
   mkdir $ERIS/chains && \
