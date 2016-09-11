@@ -26,6 +26,7 @@ var abiDirectory = process.env.ABI_DIRECTORY || './abi/',
   chainName = process.env.CHAIN_NAME || 'dualintegrator',
   chainHost = process.env.CHAIN_HOST || 'localhost',
   chainPort = process.env.CHAIN_PORT || 1337,
+  myHost = process.env.MY_HOST || 'localhost',
   factoryContractName = process.env.FACTORY_CONTRACT_NAME || 'IntegratorFactory',
   codeContractName = process.env.CODE_CONTRACT_NAME || 'DualIntegrator',
   keyFile = process.env.KEY_FILE || './accounts.json',
@@ -100,6 +101,7 @@ app.get('/', function (req, res) {
       partyBAddress: partyBAddress,
       factoryContractAddress: factoryContractAddress,
       factoryContractAddresses: factoryContractAddresses,
+      myHost: myHost,
 
       // fields users will fill in
       partyAName: partyAName,
@@ -212,7 +214,7 @@ app.post('/contract', function(req, res) {
 
               // set the url where you want the recipient to go once they are done signing
               var returnUrl = new docusign.RecipientViewRequest();
-              returnUrl.setReturnUrl('http://localhost:' + appPort + '/complete/' + codeContractAddress + '/' + envelopeId);
+              returnUrl.setReturnUrl('http://' + myHost + ':' + appPort + '/complete/' + codeContractAddress + '/' + envelopeId);
               returnUrl.setAuthenticationMethod('email');
 
               // recipient information must match embedded recipient info we provided in step #2
@@ -399,7 +401,8 @@ app.get('/contract/:address', function(req, res) {
       partyBName: partyBName,
       numberOfMonths: numberOfMonths,
       proseContractsHash: proseContractsHash,
-      proseContractAsHTML: proseContractAsHTML
+      proseContractAsHTML: proseContractAsHTML,
+      myHost: myHost,
     });
   }
 

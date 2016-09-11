@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+cleanup() {
+  rm ./accounts.json &>/dev/null
+  rm ./jobs_output.json &>/dev/null
+  rm -rf ./abi &>/dev/null
+  docker rmi dualintegrator &>/dev/null
+  eris services rm dualintegrator --data --force --file &>/dev/null
+  eris chains rm dualintegrator --data --force --dir &>/dev/null
+}
+
+main() {
+  cleanup
+}
+
+main $@

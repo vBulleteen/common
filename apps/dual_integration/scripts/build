@@ -70,7 +70,18 @@ node installed on your machine, nor any of the node modules which
 this repository needs to run.
 
 EOF
+  # note forcibly assumes the `eris` machine on OSX
+  if [ "$(uname)" == "Darwin" ]; then
+    ip=$(dm ip eris)
+    if [[ "$ip" == "" ]]; then
+      echo "Please make sure you are using your eris docker-machine"
+      exit 1
+    fi
+    sed -i -e "s/ *\"MY_HOST=localhost\",/ *\"MY_HOST=$ip\",/g" ./dualintegrator.toml
+    cat ./dualintegrator.toml
+  fi
   docker build -t dualintegrator . &>/dev/null
+  cp ./dualintegrator.toml $HOME/.eris/services/.
 }
 
 main() {

@@ -12,27 +12,27 @@ html
                 tr
                     td Code Contract's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + codeContractAddress + '"') #{codeContractAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + codeContractAddress + '"') #{codeContractAddress}
                 tr
                     td Contract's Factory Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + factoryContractAddress + '"') #{factoryContractAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + factoryContractAddress + '"') #{factoryContractAddress}
                 tr
                     td Party A's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + partyAAddress + '"') #{partyAAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + partyAAddress + '"') #{partyAAddress}
                 tr
                     td Party B's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + partyBAddress + '"') #{partyBAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + partyBAddress + '"') #{partyBAddress}
                 tr
                     td Contract's Length
                     td
-                        a(href='http://localhost:46657/get_storage?address="' + codeContractAddress + '"' + '&key="00"') #{numberOfMonths} months
+                        a(href='http://' + myHost + ':46657/get_storage?address="' + codeContractAddress + '"' + '&key="00"') #{numberOfMonths} months
                 tr
                     td Contract's IPFSHash (Local IPFS)
                     td
-                        a(href='http://localhost:8080/ipfs/' + proseContractsHash) #{proseContractsHash}
+                        a(href='http://' + myHost + ':8080/ipfs/' + proseContractsHash) #{proseContractsHash}
                 tr
                     td Contract's IPFSHash (IPFS Gateway)
                     td
@@ -41,7 +41,7 @@ html
         h4 Contract's Prose:
         div
             if proseContractAsHTML == ""
-                object(width="100%" height="80%" type="application/pdf" data='http://localhost:8080/ipfs/' + proseContractsHash)
+                object(width="100%" height="80%" type="application/pdf" data='http://' + myHost + ':8080/ipfs/' + proseContractsHash)
             else
                 div !{proseContractAsHTML}
     p

@@ -23,6 +23,7 @@ environment = [
   "APP_PORT=3000",
   "IPFS_HOST=ipfs",
   "CHAIN_HOST=dualintegrator",
+  "MY_HOST=localhost",
   "DOCUSIGN_USER=***",
   "DOCUSIGN_PASS=***",
   "DOCUSIGN_KEY=***"

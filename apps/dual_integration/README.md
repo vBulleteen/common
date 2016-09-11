@@ -48,7 +48,7 @@ To get this directory from IPFS:
 
 ```bash
 eris services start ipfs
-eris files get QmbHHars4Th7BGG1Ba1emcssXzu9z7v38DpC72hg5kTqxM -o dual_integrator
+eris files get QmexoM66S7TdoQ3E2Vp767Hbdy7UBwVZphgHPKXuwNQF4L -o dual_integrator
 cd dual_integrator
 ```
 
@@ -57,7 +57,7 @@ cd dual_integrator
 A script which provides all the necessary functionality has been included in the root directory of this folder. If you downloaded the directory from IPFS then you will need to perform the following:
 
 ```bash
-chmod +x -R scripts
+chmod -R +x scripts
 ```
 
 If you cloned the repository from git then you will not need to do so.
@@ -68,7 +68,13 @@ Now start the application with:
 scripts/run
 ```
 
+### Linux
+
 Once the application has booted then go to http://localhost:3000/ in your browser.
+
+### OSX
+
+Once the application has booted then go to http://IP:3000/ in your browser, where IP is the docker-machine IP of your `eris` machine.
 
 ## Utilizing Docusign
 

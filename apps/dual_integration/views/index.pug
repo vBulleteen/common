@@ -10,15 +10,15 @@ html
                 tr
                     td Party A's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + partyAAddress + '"') #{partyAAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + partyAAddress + '"') #{partyAAddress}
                 tr
                     td Party B's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + partyBAddress + '"') #{partyBAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + partyBAddress + '"') #{partyBAddress}
                 tr
                     td Factory's Address
                     td
-                        a(href='http://localhost:46657/get_account?address="' + factoryContractAddress + '"') #{factoryContractAddress}
+                        a(href='http://' + myHost + ':46657/get_account?address="' + factoryContractAddress + '"') #{factoryContractAddress}
     hr
     div
         h4 Make a New Code|Prose Contract Set
