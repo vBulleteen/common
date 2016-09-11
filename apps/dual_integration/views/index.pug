@@ -44,6 +44,6 @@ html
     div
         h4 Code Contracts That Exist
         ul
-          each addr in factoryContractAddresses.length ? factoryContractAddresses : ['There are no contracts right now']
+          each addr in factoryContractAddresses.length ? factoryContractAddresses : ''
             li
                 a(href='/contract/' + addr) #{addr}

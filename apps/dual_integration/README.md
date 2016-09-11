@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is an example application for dual integration, a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible blockchain (hereinafter "chain").
+This is an example application for [dual integration](https://erisindustries.com/components/erislegal/), a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible blockchain (hereinafter "chain").
 
 The dual integration example takes a set of parameters and uses those to deploy a code contract from what is called a `factory contract`. Factory contracts are contracts which create other contracts and are used within smart contract compatible chains in a similar manner to how object oriented programmers utilize class definitions.
 
@@ -48,7 +48,7 @@ To get this directory from IPFS:
 
 ```bash
 eris services start ipfs
-eris files get QmbakV8jZkQM88Ax9FH2PEfZ4hJxrVNmmjbwhtSHqR3Q5o ./dual_integrator
+eris files get QmXCmUH17Z7eSuoFvX9jHVdbJY4coJaSx4AC2DVTyN2WPs ./dual_integrator
 cd dual_integrator
 ```
 
@@ -57,7 +57,7 @@ cd dual_integrator
 A script which provides all the necessary functionality has been included in the root directory of this folder. If you downloaded the directory from IPFS then you will need to perform the following:
 
 ```bash
-chmod +x ./run
+chmod +x -R scripts
 ```
 
 If you cloned the repository from git then you will not need to do so.
@@ -65,7 +65,7 @@ If you cloned the repository from git then you will not need to do so.
 Now start the application with:
 
 ```bash
-./run
+scripts/run
 ```
 
 Once the application has booted then go to http://localhost:3000/ in your browser.
@@ -76,7 +76,7 @@ If you would like to see the docusign API leveraged then you will need to [regis
 
 Once you have those then change the `dualintegrator.toml` file in the appropriate lines for your user, password, and API key.
 
-Once you have filled in those fields, then re-run the `./run` script and you'll be good to go!
+Once you have filled in those fields, then re-run the `scripts/run` script and you'll be good to go!
 
 
 

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Hello! I'm the marmot who runs the Dual Integration example application."
-
 setup() {
   cat <<EOF
 
@@ -75,35 +73,8 @@ EOF
   docker build -t dualintegrator . &>/dev/null
 }
 
-run() {
-  cat <<EOF
-Finally, we will move the dualintegrator service definition file
-that was included in this repository to the ~/.eris/services dir
-and then we will run [eris services start dualintegrator].
-
-EOF
-  cp ./dualintegrator.toml $HOME/.eris/services/.
-  eris services start dualintegrator
-  eris services logs dualintegrator -f
-}
-
-cleanup() {
-  rm ./accounts.json &>/dev/null
-  rm ./jobs_output.json &>/dev/null
-  rm -rf ./abi &>/dev/null
-  docker rmi dualintegrator &>/dev/null
-  eris services rm dualintegrator --data --force --file &>/dev/null
-  eris chains rm dualintegrator --data --force --dir &>/dev/null
-}
-
 main() {
-  set +e
-  cleanup
-  set -e
   setup
-  run
-  trap "trap - SIGTERM; cleanup $@; kill -- -$$" SIGINT SIGTERM EXIT
-  tail -f /dev/null & wait
 }
 
 main $@

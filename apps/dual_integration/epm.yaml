@@ -103,18 +103,14 @@ jobs:
       relation: eq
       val: $dummyHash
 
-# - name: checkPartyAName
-#   job:
-#     assert:
-#       key: $getIntegratorNames._partyAName
-#       relation: eq
-#       val: $partyAName
-
-# - name: checkPartyBName
-#   job:
-#     assert:
-#       key: $getIntegratorNames._partyBName
-#       relation: eq
-#       val: $partyBName
+- name: removeTester
+  job:
+    call:
+      destination: $deployIntegratorFactory
+      function: rmInstrument
+      data:
+        - $createIntegrator
+      abi: IntegratorFactory
+      wait: true
 
 # in a real application at this point we'd remove the dummy contracts used for testing
