@@ -1,5 +1,7 @@
 ## Dual Integration Example Application
 
+**Status**: beta (ready for external testing)
+
 ### Introduction
 
 This is an example application for dual integration, a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible chain.
