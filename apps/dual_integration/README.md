@@ -58,6 +58,28 @@ Once you have those then change the `dualintegrator.toml` file in the appropriat
 
 Once you have filled in those fields, then re-run the `./run` script and you'll be good to go!
 
+## Screenshots
+
+#### Index Page
+
+![Index page](images/index-ing.png?raw=true "Index page")
+
+#### Contract Details (without Docusign)
+
+![Contract details](images/contract-details.png?raw=true "Contract details")
+
+#### Contract Details (with Docusign)
+
+![Contract details with docusign](images/contract-details-docusign.png?raw=true "Contract details -- with Docusign")
+
+* Note, this view uses a super slick way of embedding pdf documents right from their hash! See `views/contract.pug`.
+
+#### Docusign-ing
+
+![Docusign-ing](images/docusign-ing.png?raw=true "Docusign-ing")
+
+
+
 ## License
 
 MIT (see repository root).

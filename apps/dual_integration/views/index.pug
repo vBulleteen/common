@@ -9,20 +9,16 @@ html
             tbody
                 tr
                     td Party A's Address
-                    td= partyAAddress
+                    td
+                        a(href='http://localhost:46657/get_account?address="' + partyAAddress + '"') #{partyAAddress}
                 tr
                     td Party B's Address
-                    td= partyBAddress
+                    td
+                        a(href='http://localhost:46657/get_account?address="' + partyBAddress + '"') #{partyBAddress}
                 tr
                     td Factory's Address
-                    td= factoryContractAddress
-    hr
-    div
-        h4 Code Contracts That Exist
-        ul
-          each addr in factoryContractAddresses.length ? factoryContractAddresses : ['There are no contracts right now']
-            li
-                a(href='/contract/' + addr) #{addr}
+                    td
+                        a(href='http://localhost:46657/get_account?address="' + factoryContractAddress + '"') #{factoryContractAddress}
     hr
     div
         h4 Make a New Code|Prose Contract Set
@@ -44,3 +40,10 @@ html
                 input(id="numberOfMonths", type="text", name="numberOfMonths", value=numberOfMonths)
             div.actions
                 input(type="submit", value="Make a New Set of Contracts")
+    hr
+    div
+        h4 Code Contracts That Exist
+        ul
+          each addr in factoryContractAddresses.length ? factoryContractAddresses : ['There are no contracts right now']
+            li
+                a(href='/contract/' + addr) #{addr}
