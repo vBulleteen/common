@@ -1,8 +1,8 @@
-## Dual Integration Example Application
+# Dual Integration Example Application
 
 **Status**: beta (ready for external testing)
 
-### Introduction
+## Introduction
 
 This is an example application for dual integration, a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible chain.
 
@@ -14,7 +14,27 @@ Next the application sends the prose contract to Docusign's demonstration API fo
 
 The final step is registration of the immutable hash which IPFS utilizes in its [content addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage) system into the proper parameters of the code contract.
 
-### What does this demonstrate?
+## Screenshots
+
+#### Index Page
+
+![Index page](images/index-ing.png?raw=true "Index page")
+
+#### Contract Details (without Docusign)
+
+![Contract details](images/contract-details.png?raw=true "Contract details")
+
+#### Contract Details (with Docusign)
+
+![Contract details with docusign](images/contract-details-docusign.png?raw=true "Contract details -- with Docusign")
+
+* Note, this view uses a super slick way of embedding pdf documents right from their hash! See `views/contract.pug`.
+
+#### Docusign-ing
+
+![Docusign-ing](images/docusign-ing.png?raw=true "Docusign-ing")
+
+## What does this demonstrate?
 
 This application demonstrates the proper integration of a piece of code which tracks a given relationship into the legal contract that provides the overarching legal framework for that relationship. This integration, when done according to the proper legalities in the relevant jurisdiction(s) ensures that there is a clear distinction as well as integration of both the code and the prose contracts into each other.
 
@@ -57,26 +77,6 @@ If you would like to see the docusign API leveraged then you will need to [regis
 Once you have those then change the `dualintegrator.toml` file in the appropriate lines for your user, password, and API key.
 
 Once you have filled in those fields, then re-run the `./run` script and you'll be good to go!
-
-## Screenshots
-
-#### Index Page
-
-![Index page](images/index-ing.png?raw=true "Index page")
-
-#### Contract Details (without Docusign)
-
-![Contract details](images/contract-details.png?raw=true "Contract details")
-
-#### Contract Details (with Docusign)
-
-![Contract details with docusign](images/contract-details-docusign.png?raw=true "Contract details -- with Docusign")
-
-* Note, this view uses a super slick way of embedding pdf documents right from their hash! See `views/contract.pug`.
-
-#### Docusign-ing
-
-![Docusign-ing](images/docusign-ing.png?raw=true "Docusign-ing")
 
 
 
