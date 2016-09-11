@@ -48,7 +48,7 @@ To get this directory from IPFS:
 
 ```bash
 eris services start ipfs
-eris files get QmbHHars4Th7BGG1Ba1emcssXzu9z7v38DpC72hg5kTqxM ./dual_integrator
+eris files get QmbHHars4Th7BGG1Ba1emcssXzu9z7v38DpC72hg5kTqxM -o dual_integrator
 cd dual_integrator
 ```
 
