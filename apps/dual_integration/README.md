@@ -10,7 +10,7 @@ The dual integration example takes a set of parameters and uses those to deploy 
 
 After the code contract is created via the set of parameters which are passed to the `factory contract` then the application leverages the excellent [CommonForm](https://commonform.org) document assembly mechanisms to create a template of the prose contract using the exact same parameters which were passed to the code contract as well as the addresses on the chain of the various entities and contracts.
 
-Next the application sends the prose contract to Docusign's demonstration API for signature (to use this feature you will need to register for a docusign API key, more on that below). Finally, the assembled package of contracts is sent to the [IPFS](https://ipfs.io) distributed file storage system for p2p distribution of the files.
+Next the application sends the assembled prose contract to Docusign's demonstration API for signature (to use this feature you will need to register for a docusign API key, more on that below). Finally, the assembled package of contracts is sent to the [IPFS](https://ipfs.io) distributed file storage system for p2p distribution of the files.
 
 The final step is registration of the immutable hash which IPFS utilizes in its [content addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage) system into the proper parameters of the code contract.
 
