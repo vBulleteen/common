@@ -14,6 +14,6 @@
 
             \\ The contract was instantiated from a "factory" contract located at address: [Contract Factory Address] on the same blockchain network.
 
-            \\ {Seller} has the cryptographic keypair which results in the address of [Party A Address].
+            \\ <Seller> has the cryptographic keypair which results in the address of [Party A Address].
 
-            \\ {Buyer} has the cryptographic keypair which results in the address of [Party B Address].
+            \\ <Buyer> has the cryptographic keypair which results in the address of [Party B Address].
