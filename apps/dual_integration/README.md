@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is an example application for dual integration, a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible chain.
+This is an example application for dual integration, a conceptual linkage between a contract that is written in prose (and therefore can be taken to court) along with a contract that is written in code and runs on a smart contract compatible blockchain (hereinafter "chain").
 
 The dual integration example takes a set of parameters and uses those to deploy a code contract from what is called a `factory contract`. Factory contracts are contracts which create other contracts and are used within smart contract compatible chains in a similar manner to how object oriented programmers utilize class definitions.
 
