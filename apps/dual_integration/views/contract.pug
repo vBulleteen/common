@@ -12,7 +12,7 @@ html
                 tr
                     td Code Contract's Address
                     td
-                        a(href=codeContractAddress) #{codeContractAddress}
+                        a(href='http://localhost:46657/get_account?address="' + codeContractAddress + '"') #{codeContractAddress}
                 tr
                     td Contract's IPFSHash (Local IPFS)
                     td
@@ -25,14 +25,8 @@ html
                     td Contract's Factory Address
                     td= factoryContractAddress
                 tr
-                    td Party A's Name
-                    td= partyAName
-                tr
                     td Party A's Address
                     td= partyAAddress
-                tr
-                    td Party B's Name
-                    td= partyBName
                 tr
                     td Party B's Address
                     td= partyBAddress
@@ -42,6 +36,10 @@ html
                 tr
     div
         h4 Contract's Prose:
-        div !{proseContractAsHTML}
+        div
+            if proseContractAsHTML == ""
+                object(width="100%" height="80%" type="application/pdf" data='http://localhost:8080/ipfs/' + proseContractsHash)
+            else
+                div !{proseContractAsHTML}
     p
         a(href='/') Go Home
